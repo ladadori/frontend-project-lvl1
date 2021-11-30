@@ -8,6 +8,9 @@
   "description": "[![Actions Status](https://github.com/ladadori/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/ladadori/frontend-project-lvl1/actions)",
   "version": "1.0.0",
   "main": "index.js",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
   "dependencies": {
     "acorn": "^8.6.0",
     "acorn-jsx": "^5.3.2",
