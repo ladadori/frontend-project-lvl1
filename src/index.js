@@ -20,9 +20,15 @@ export const printGameRules = (gameName) => {
 };
 
 export const isAnswerCorrect = (userAnswer, correctAnswer) => userAnswer === correctAnswer;
-export const printQuestion = (question, optionalQuestion) => log(`Question: ${question} ${optionalQuestion}`);
+export const printQuestion = (question, optionalQuestion = '') => log(`Question: ${question} ${optionalQuestion}`);
 export const getUserAnswer = () => readlineSync.question('Your answer: ');
-export const getRandomInteger = (integerLimit) => Math.floor(Math.random() * integerLimit);
+
+export const getRandomInteger = (max, min = 0) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+}
+
 export const printSorry = (name, userAnswer, correctAnswer) => {
   log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
   log(`Let's try again, ${name}`);
@@ -60,7 +66,7 @@ export const getCalculation = (leftOperand, operator, rightOperand) => {
 export const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
 
 const getProgression = (lengthLimit) => {
-  const progressionStep = getRandomInteger(5);
+  const progressionStep = getRandomInteger(5, 2);
   const firstProgressionNumber = getRandomInteger(10);
   const progression = [firstProgressionNumber];
   let lastAddedNumberIndex = 0;
