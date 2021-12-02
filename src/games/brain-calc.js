@@ -30,10 +30,10 @@ const startBrainCalc = () => {
     const correctAnswer = getCalculation(leftOperand, operator, rightOperand);
     const userVictory = isAnswerCorrect(userAnswer, correctAnswer);
 
-    if (userVictory === true) {
-      log('Correct!');
-      wonRoundCount += 1;
-    } else {
+    if (userVictory === true) { // возможно, эту проверку можно тоже вынести отдельно,
+      log('Correct!'); // но я не знаю, как унести в другой модуль имя пользователя,
+      wonRoundCount += 1; // чтобы посочувствовать его поражению.
+    } else { // или может надо не так много вынести?
       printSorry(name, userAnswer, correctAnswer);
       break;
     }
