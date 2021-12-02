@@ -9,3 +9,31 @@ export const printSorry = (name, userAnswer, correctAnswer) => {
   log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
   log(`Let's try again, ${name}`);
 };
+export const getRandomExpression = (IntegerLimit) => {
+  const leftOperand = getRandomInteger(IntegerLimit);
+  const rightOperand = getRandomInteger(IntegerLimit);
+  const operators = ['+', '-', '*'];
+  const getRandomOperator = () => {
+    const indexOfOperator = getRandomInteger(3);
+    const operator = operators[indexOfOperator];
+    return operator;
+  };
+  const operator = getRandomOperator();
+  const stringExpression = `${leftOperand} ${operator} ${rightOperand}`;
+  const expressionCollection = [stringExpression, leftOperand, operator, rightOperand];
+  return expressionCollection;
+};
+
+export const getCalculation = (leftOperand, operator, rightOperand) => {
+  switch(operator) {
+    case '-':
+      return leftOperand - rightOperand;
+      break;
+    case '+':
+      return leftOperand + rightOperand;
+      break;
+    case '*':
+      return leftOperand * rightOperand;
+      break;
+  }
+};
