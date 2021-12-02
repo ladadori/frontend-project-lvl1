@@ -31,6 +31,6 @@ export const getCalculation = (leftOperand, operator, rightOperand) => {
     case '+':
       return leftOperand + rightOperand;
     case '*':
-      return leftOperand * rightOperand;
-  }
+      return leftOperand * rightOperand; // линтер ругается, что нет возврата значения в конце стрелочной функции.
+  } // я по-злодейски отлючила это правило, нужна консультация как соблюсти тут consistent return.
 };
