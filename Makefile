@@ -9,3 +9,6 @@ publish:
 
 eslint:
 	npx eslint .
+
+link:
+	sudo npm link
