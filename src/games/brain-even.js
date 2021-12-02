@@ -6,7 +6,7 @@ import {
   printQuestion,
   getUserAnswer,
   getRandomInteger,
-  printSorry;
+  printSorry,
 } from '../index.js';
 
 const startBrainEven = () => {
