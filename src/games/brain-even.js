@@ -6,7 +6,8 @@ import {
   printQuestion,
   getUserAnswer,
   getRandomInteger,
-} from './game-library.js';
+  printSorry;
+} from '../index.js';
 
 const startBrainEven = () => {
   // Нужно записать имя пользователя в пределах области видимости,
@@ -35,8 +36,7 @@ const startBrainEven = () => {
       log('Correct!');
       wonRoundCount += 1;
     } else {
-      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      log(`Let's try again, ${name}`);
+      printSorry(name, userAnswer, correctAnswer);
     }
   }
 
