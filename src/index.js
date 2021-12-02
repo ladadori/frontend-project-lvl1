@@ -17,7 +17,7 @@ export const printGameRules = (gameName) => {
 };
 
 export const isAnswerCorrect = (userAnswer, correctAnswer) => userAnswer === correctAnswer;
-export const printQuestion = (question) => log(`Question: ${question}`);
+export const printQuestion = (question, optionalQuestion) => log(`Question: ${question} ${optionalQuestion}`);
 export const getUserAnswer = () => readlineSync.question('Your answer: ');
 export const getRandomInteger = (integerLimit) => Math.floor(Math.random() * integerLimit);
 export const printSorry = (name, userAnswer, correctAnswer) => {
