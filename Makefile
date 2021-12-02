@@ -12,3 +12,6 @@ eslint:
 
 link:
 	sudo npm link
+
+rec:
+	asciinema rec
