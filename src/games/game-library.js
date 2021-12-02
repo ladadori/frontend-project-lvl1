@@ -5,6 +5,12 @@ export const isAnswerCorrect = (userAnswer, correctAnswer) => userAnswer === cor
 export const printQuestion = (question) => log(`Question: ${question}`);
 export const userAnswer = readlineSync.question('Your answer: ');
 
+
+export const randomInteger = () => {
+  const numberLimit = 50;
+  Math.floor(Math.random() * numberLimit);
+};
+
 export const printGreeting = () => {
   log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
