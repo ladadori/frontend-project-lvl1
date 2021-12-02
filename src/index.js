@@ -85,5 +85,6 @@ export const getProgressionRiddle = (lengthLimit) => {
   const hiddenNumber = progression[blankIndex];
   const progressionWithBlank = progression.slice(0);
   progressionWithBlank[blankIndex] = '..';
-  return [progressionWithBlank, hiddenNumber];
+  const stringProgressionWithBlank = progressionWithBlank.join(' ');
+  return [progressionWithBlank, stringProgressionWithBlank, hiddenNumber];
 };

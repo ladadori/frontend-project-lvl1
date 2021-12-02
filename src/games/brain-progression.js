@@ -22,8 +22,8 @@ const startBrainProgression = () => {
   const lengthLimit = 10;
 
   while (wonRoundCount < maxRoundCount) {
-    const [progressionRiddle, correctAnswer] = getProgressionRiddle(lengthLimit);
-    printQuestion(progressionRiddle);
+    const [, stringProgressionRiddle, correctAnswer] = getProgressionRiddle(lengthLimit);
+    printQuestion(stringProgressionRiddle);
     const userAnswer = Number(getUserAnswer());
     const userVictory = isAnswerCorrect(userAnswer, correctAnswer);
 
