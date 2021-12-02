@@ -15,7 +15,6 @@ export const printGameRules = (gameName) => {
       break;
   }
 };
-};
 
 export const isAnswerCorrect = (userAnswer, correctAnswer) => userAnswer === correctAnswer;
 export const printQuestion = (question) => log(`Question: ${question}`);
