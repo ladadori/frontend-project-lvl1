@@ -38,10 +38,11 @@ const startBrainEven = () => {
       wonRoundCount += 1;
     } else {
       printSorry(name, userAnswer, correctAnswer);
+      break;
     }
   }
 
-  log(`Congratulations, ${name}!`);
+  if (wonRoundCount === 3) log(`Congratulations, ${name}!`);
 };
 
 export default startBrainEven;
