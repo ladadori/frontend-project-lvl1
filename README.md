@@ -9,4 +9,4 @@
 
 ### Brain-calc game:
 
-[![asciicast](https://asciinema.org/a/453126.svg)](https://asciinema.org/a/453126)
+[![asciicast](https://asciinema.org/a/453128.svg)](https://asciinema.org/a/453128)
