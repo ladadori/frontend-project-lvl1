@@ -24,10 +24,10 @@ export const printQuestion = (question, optionalQuestion = '') => log(`Question:
 export const getUserAnswer = () => readlineSync.question('Your answer: ');
 
 export const getRandomInteger = (max, min = 0) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
-}
+  const minNum = Math.ceil(min);
+  const maxNum = Math.floor(max);
+  return Math.floor(Math.random() * (maxNum - minNum)) + minNum;
+};
 
 export const printSorry = (name, userAnswer, correctAnswer) => {
   log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
