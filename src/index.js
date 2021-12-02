@@ -13,6 +13,9 @@ export const printGameRules = (gameName) => {
     case 'brainGcd':
       log('Find the greatest common divisor of given numbers.');
       break;
+    case 'brainProgression':
+      log('What number is missing in the progression?');
+      break;
   }
 };
 
@@ -55,3 +58,26 @@ export const getCalculation = (leftOperand, operator, rightOperand) => {
 
 //  vvv Слизала с инернета, сама не смогла за полчаса написать.
 export const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
+
+const getProgression = (lengthLimit) => {
+  const progressionStep = getRandomInteger(5);
+  const firstProgressionNumber = getRandomInteger(10);
+  const progression = [firstProgressionNumber];
+  let lastAddedNumberIndex = 0;
+  while (progression.length < lengthLimit) {
+    const newProgressionNumber = progression[lastAddedNumberIndex] + progressionStep;
+    progression.push(newProgressionNumber);
+    lastAddedNumberIndex += 1;
+  }
+  return progression;
+};
+
+export const getProgressionRiddle = (lengthLimit) => {
+  const progression = getProgression(lengthLimit);
+  const progressionLength = progression.length;
+  const blankIndex = getRandomInteger(progressionLength);
+  const hiddenNumber = progression[blankIndex];
+  const progressionWithBlank = progression.slice(0);
+  progressionWithBlank[blankIndex] = '..';
+  return [progressionWithBlank, hiddenNumber];
+};
