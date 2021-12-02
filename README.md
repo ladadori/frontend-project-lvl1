@@ -14,3 +14,7 @@
 ### Brain-gcd game:
 
 [![asciicast](https://asciinema.org/a/453135.svg)](https://asciinema.org/a/453135)
+
+### Brain-progression game:
+
+[![asciicast](https://asciinema.org/a/453151.svg)](https://asciinema.org/a/453151)
