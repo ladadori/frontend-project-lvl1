@@ -1,34 +1,46 @@
-import runGreeting from '../../bin/brain-games';
 import readlineSync from 'readline-sync';
 
-console.log('Welcome to the Brain Games!');
-const name = readlineSync.question('May I have your name? ');
-console.log(`Hello, ${name}!`);
-
-const getRandomInteger = () => (Math.floor(Math.random() * 50));
-const isIntegerEven = (integer) => integer % 2 ? true : false;
+import {
+  log,
+  isAnswerCorrect,
+  printQuestion,
+  getUserAnswer,
+  getRandomInteger,
+} from './game-library.js';
 
 const startBrainEven = () => {
+  // Нужно записать имя пользователя в пределах области видимости,
+  // поэтому не могу спрятать это в printGreeting()
+  log('Welcome to the Brain Games!');
+  const name = readlineSync.question('May I have your name? ');
+  log(`Hello, ${name}!`);
 
-  const printCongrats = () => console.log(`Congratulations, ${name}!`);
-  let playedRoundCount = 0;
-  console.log('Answer "yes" if the number is even, otherwise answer "no"');
-  playedRoundCount === 3 ? printCongrats() : startRound();
+  const gameRules = 'Answer "yes" if the number is even, otherwise answer "no".';
+  log(gameRules);
 
-    const startRound = () => {
-      const integer = getRandomInteger();
-      const correctAnswer = isIntegerEven(integer) ? 'yes' : 'no';
-      console.log(`Question: ${integer}`);
-      const userAnswer = readlineSync.question('Your answer: ');
-      if (userAnswer === correctAnswer) {
-        console.log('Correct!');
-        playedRoundCount += 1;
-      } else {
-        console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${correctAnswer}.`)
-        console.log(`Let's try again, ${name}`);
-      };
-    };
-  };
+  let wonRoundCount = 0;
+  const maxRoundCount = 3;
+  const integerLimit = 50;
+
+  const isEven = (integer) => integer % 2 === 0;
+
+  while (wonRoundCount < maxRoundCount) {
+    const randomInteger = getRandomInteger(integerLimit);
+    printQuestion(randomInteger);
+    const userAnswer = getUserAnswer() === 'yes';
+    const correctAnswer = isEven(randomInteger);
+    const userVictory = isAnswerCorrect(userAnswer, correctAnswer);
+
+    if (userVictory === true) {
+      log('Correct!');
+      wonRoundCount += 1;
+    } else {
+      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+      log(`Let's try again, ${name}`);
+    }
+  }
+
+  log(`Congratulations, ${name}!`);
 };
 
 export default startBrainEven;
