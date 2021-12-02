@@ -5,5 +5,5 @@ export const getUserAnswer = () => readlineSync.question('Your answer: ');
 
 
 export const getRandomInteger = (integerLimit) => {
-  Math.floor(Math.random() * integerLimit);
+  return Math.floor(Math.random() * integerLimit);
 };
