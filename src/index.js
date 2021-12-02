@@ -25,15 +25,12 @@ export const getRandomExpression = (IntegerLimit) => {
 };
 
 export const getCalculation = (leftOperand, operator, rightOperand) => {
-  switch(operator) {
+  switch (operator) {
     case '-':
       return leftOperand - rightOperand;
-      break;
     case '+':
       return leftOperand + rightOperand;
-      break;
     case '*':
       return leftOperand * rightOperand;
-      break;
   }
 };
