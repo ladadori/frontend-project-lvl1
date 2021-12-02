@@ -8,6 +8,7 @@ import {
   printSorry,
   getRandomExpression,
   getCalculation,
+  printGameRules,
 } from '../index.js';
 
 const startBrainCalc = () => {
@@ -15,8 +16,7 @@ const startBrainCalc = () => {
   const name = readlineSync.question('May I have your name? ');
   log(`Hello, ${name}!`);
 
-  const gameRules = 'What is the result of the expression?';
-  log(gameRules);
+  printGameRules(brainCalc);
 
   let wonRoundCount = 0;
   const maxRoundCount = 3;

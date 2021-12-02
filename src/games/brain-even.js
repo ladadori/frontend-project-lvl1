@@ -7,6 +7,8 @@ import {
   getUserAnswer,
   getRandomInteger,
   printSorry,
+  printGameRules,
+  printGameRules,
 } from '../index.js';
 
 const startBrainEven = () => {
@@ -16,8 +18,7 @@ const startBrainEven = () => {
   const name = readlineSync.question('May I have your name? ');
   log(`Hello, ${name}!`);
 
-  const gameRules = 'Answer "yes" if the number is even, otherwise answer "no".';
-  log(gameRules);
+  printGameRules(brainEven);
 
   let wonRoundCount = 0;
   const maxRoundCount = 3;

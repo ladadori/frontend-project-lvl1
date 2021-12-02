@@ -1,6 +1,22 @@
 import readlineSync from 'readline-sync';
 
 export const { log } = console;
+
+export const printGameRules = (gameName) => {
+  switch (gameName) {
+    case 'brainEven':
+      log('Answer "yes" if the number is even, otherwise answer "no".');
+      break;
+    case 'brainCalc':
+      log('What is the result of the expression?');
+      break;
+    case 'brainGcd':
+      log('Find the greatest common divisor of given numbers.');
+      break;
+  }
+};
+};
+
 export const isAnswerCorrect = (userAnswer, correctAnswer) => userAnswer === correctAnswer;
 export const printQuestion = (question) => log(`Question: ${question}`);
 export const getUserAnswer = () => readlineSync.question('Your answer: ');
@@ -34,3 +50,6 @@ export const getCalculation = (leftOperand, operator, rightOperand) => {
       return leftOperand * rightOperand; // линтер ругается, что нет возврата значения в конце стрелочной функции.
   } // я по-злодейски отлючила это правило, нужна консультация как соблюсти тут consistent return.
 };
+
+//  vvv Слизала с инернета, сама не смогла за полчаса написать.
+export const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
