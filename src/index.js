@@ -16,6 +16,9 @@ export const printGameRules = (gameName) => {
     case 'brainProgression':
       log('What number is missing in the progression?');
       break;
+    case 'brainPrime':
+      log('Answer "yes" if given number is prime. Otherwise answer "no".');
+      break;
   }
 };
 
@@ -30,9 +33,15 @@ export const getRandomInteger = (max, min = 0) => {
 };
 
 export const printSorry = (name, userAnswer, correctAnswer) => {
-  log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+  // считается ли что я подстроила так функцию нижнего уровня под верхний уровень?
+  // я подумала что это функция верхнего уровня и она потому должна подстроиться
+  // под нижний уровень, где у нас булевы выражения.
+  const stringUserAnswer = userAnswer ? 'yes' : 'no';
+  const stringCorrectAnswer = correctAnswer ? 'yes' : 'no';
+  log(`"${stringUserAnswer}" is wrong answer ;(. Correct answer was "${stringCorrectAnswer}".`);
   log(`Let's try again, ${name}`);
 };
+
 export const getRandomExpression = (IntegerLimit) => {
   const leftOperand = getRandomInteger(IntegerLimit);
   const rightOperand = getRandomInteger(IntegerLimit);
