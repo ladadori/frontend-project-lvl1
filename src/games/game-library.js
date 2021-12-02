@@ -6,7 +6,7 @@ export const printQuestion = (question) => log(`Question: ${question}`);
 export const userAnswer = readlineSync.question('Your answer: ');
 
 
-export const randomInteger = () => {
+export const getRandomInteger = () => {
   const numberLimit = 50;
   Math.floor(Math.random() * numberLimit);
 };
