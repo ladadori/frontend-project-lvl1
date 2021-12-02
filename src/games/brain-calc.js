@@ -5,7 +5,6 @@ import {
   isAnswerCorrect,
   printQuestion,
   getUserAnswer,
-  printSorry,
   getRandomExpression,
   getCalculation,
   printGameRules,
@@ -25,16 +24,18 @@ const startBrainCalc = () => {
   while (wonRoundCount < maxRoundCount) {
     const [expression, ...expressionParts] = getRandomExpression(integerLimit);
     printQuestion(expression);
-    const userAnswer = Number(getUserAnswer());
+    const userAnswer = getUserAnswer();
+    const userAnswerToNumber = Number(userAnswer);
     const [leftOperand, operator, rightOperand] = expressionParts;
     const correctAnswer = getCalculation(leftOperand, operator, rightOperand);
-    const userVictory = isAnswerCorrect(userAnswer, correctAnswer);
+    const userVictory = isAnswerCorrect(userAnswerToNumber, correctAnswer);
 
     if (userVictory === true) { // возможно, эту проверку можно тоже вынести отдельно,
       log('Correct!'); // но я не знаю, как унести в другой модуль имя пользователя,
       wonRoundCount += 1; // чтобы посочувствовать его поражению.
     } else { // или может надо не так много вынести?
-      printSorry(name, userAnswer, correctAnswer);
+      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+      log(`Let's try again, ${name}!`);
       break;
     }
   }

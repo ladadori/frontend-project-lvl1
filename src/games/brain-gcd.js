@@ -5,7 +5,6 @@ import {
   isAnswerCorrect,
   printQuestion,
   getUserAnswer,
-  printSorry,
   gcd,
   printGameRules,
   getRandomInteger,
@@ -34,7 +33,8 @@ const startBrainGcd = () => {
       log('Correct!');
       wonRoundCount += 1;
     } else {
-      printSorry(name, userAnswer, correctAnswer);
+      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+      log(`Let's try again, ${name}!`);
       break;
     }
   }

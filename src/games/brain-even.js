@@ -6,7 +6,6 @@ import {
   printQuestion,
   getUserAnswer,
   getRandomInteger,
-  printSorry,
   printGameRules,
 } from '../index.js';
 
@@ -28,15 +27,17 @@ const startBrainEven = () => {
   while (wonRoundCount < maxRoundCount) {
     const randomInteger = getRandomInteger(integerLimit);
     printQuestion(randomInteger);
-    const userAnswer = getUserAnswer() === 'yes';
+    const userAnswer = getUserAnswer();
+    const booleanUserAnswer = userAnswer === 'yes';
     const correctAnswer = isEven(randomInteger);
-    const userVictory = isAnswerCorrect(userAnswer, correctAnswer);
+    const userVictory = isAnswerCorrect(booleanUserAnswer, correctAnswer);
 
     if (userVictory === true) {
       log('Correct!');
       wonRoundCount += 1;
     } else {
-      printSorry(name, userAnswer, correctAnswer);
+      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+      log(`Let's try again, ${name}!`);
       break;
     }
   }

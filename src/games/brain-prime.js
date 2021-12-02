@@ -5,7 +5,6 @@ import {
   isAnswerCorrect,
   printQuestion,
   getUserAnswer,
-  printSorry,
   printGameRules,
   getRandomInteger,
   isPrime,
@@ -26,14 +25,16 @@ const startBrainPrime = () => {
     const randomInteger = getRandomInteger(maxInteger);
     printQuestion(randomInteger);
     const correctAnswer = isPrime(randomInteger);
-    const userAnswer = getUserAnswer() === 'yes';
-    const userVictory = isAnswerCorrect(userAnswer, correctAnswer);
+    const userAnswer = getUserAnswer();
+    const booleanUserAnswer = getUserAnswer() === 'yes';
+    const userVictory = isAnswerCorrect(booleanUserAnswer, correctAnswer);
 
     if (userVictory === true) {
       log('Correct!');
       wonRoundCount += 1;
     } else {
-      printSorry(name, userAnswer, correctAnswer);
+      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+      log(`Let's try again, ${name}!`);
       break;
     }
   }
