@@ -1,14 +1,14 @@
 import readlineSync from 'readline-sync';
 
 import {
-    log,
-    isAnswerCorrect,
-    printQuestion,
-    getUserAnswer,
-    printSorry,
-    getRandomExpression,
-    getCalculation
-  } from '../index.js';
+  log,
+  isAnswerCorrect,
+  printQuestion,
+  getUserAnswer,
+  printSorry,
+  getRandomExpression,
+  getCalculation,
+} from '../index.js';
 
 const startBrainCalc = () => {
   log('Welcome to the Brain Games!');
@@ -31,16 +31,15 @@ const startBrainCalc = () => {
     const userVictory = isAnswerCorrect(userAnswer, correctAnswer);
 
     if (userVictory === true) {
-        log('Correct!');
-        wonRoundCount += 1;
-      } else {
-        printSorry(name, userAnswer, correctAnswer);
-        break;
-      }
+      log('Correct!');
+      wonRoundCount += 1;
+    } else {
+      printSorry(name, userAnswer, correctAnswer);
+      break;
     }
-  
-    if (wonRoundCount === 3) log(`Congratulations, ${name}!`);
-
   }
+
+  if (wonRoundCount === 3) log(`Congratulations, ${name}!`);
+};
 
 export default startBrainCalc;
