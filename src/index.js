@@ -46,9 +46,12 @@ export const getCalculation = (leftOperand, operator, rightOperand) => {
     case '+':
       return leftOperand + rightOperand;
     case '*':
-      return leftOperand * rightOperand; // линтер ругается, что нет возврата значения в конце стрелочной функции.
-  } // я по-злодейски отлючила это правило, нужна консультация как соблюсти тут consistent return.
+      return leftOperand * rightOperand;
+      // линтер ругается, что нет consistent return.
+      // я по-злодейски отлючила это правило, нужна консультация
+      // как соблюсти его (если надо).
+  }
 };
 
 //  vvv Слизала с инернета, сама не смогла за полчаса написать.
-export const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+export const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));

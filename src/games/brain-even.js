@@ -8,7 +8,6 @@ import {
   getRandomInteger,
   printSorry,
   printGameRules,
-  printGameRules,
 } from '../index.js';
 
 const startBrainEven = () => {
