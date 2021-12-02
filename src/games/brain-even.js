@@ -18,7 +18,7 @@ const startBrainEven = () => {
   const name = readlineSync.question('May I have your name? ');
   log(`Hello, ${name}!`);
 
-  printGameRules(brainEven);
+  printGameRules('brainEven');
 
   let wonRoundCount = 0;
   const maxRoundCount = 3;
