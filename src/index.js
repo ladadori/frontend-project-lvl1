@@ -88,3 +88,12 @@ export const getProgressionRiddle = (lengthLimit) => {
   const stringProgressionWithBlank = progressionWithBlank.join(' ');
   return [progressionWithBlank, stringProgressionWithBlank, hiddenNumber];
 };
+
+export const isPrime = (integer) => { // решение со стак оверфлоу,
+  const squareOfInteger = Math.sqrt(integer); // ибо список простых чисел копировался
+  for (let i = 2; i <= squareOfInteger; i += 1) // с поехавшим форматированием.
+      if (integer % i === 0) {
+        return false;
+      }
+  return integer > 1;
+};
