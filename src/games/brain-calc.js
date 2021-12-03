@@ -22,11 +22,10 @@ const startBrainCalc = () => {
   const integerLimit = 10;
 
   while (wonRoundCount < maxRoundCount) {
-    const [expression, ...expressionParts] = getRandomExpression(integerLimit);
+    const [expression, leftOperand, operator, rightOperand] = getRandomExpression(integerLimit);
     printQuestion(expression);
     const userAnswer = getUserAnswer();
     const userAnswerToNumber = Number(userAnswer);
-    const [leftOperand, operator, rightOperand] = expressionParts;
     const correctAnswer = getCalculation(leftOperand, operator, rightOperand);
     const userVictory = isAnswerCorrect(userAnswerToNumber, correctAnswer);
 
