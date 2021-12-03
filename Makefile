@@ -30,3 +30,6 @@ progression:
 
 prime:
 	node bin/brain-prime.js
+
+fix:
+	npx eslint . --fix
