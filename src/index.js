@@ -24,8 +24,9 @@ export const printGameRules = (gameName) => {
 
 export const isAnswerCorrect = (userAnswer, correctAnswer, type) => {
   if (type === 'string') {
+    const stringCorrectAnswer = correctAnswer === true ? 'yes' : 'no';
     const formated = userAnswer === 'yes' || userAnswer === 'no';
-    return (userAnswer === correctAnswer && formated);
+    return (userAnswer === stringCorrectAnswer && formated);
   }
   return userAnswer === correctAnswer;
 }
