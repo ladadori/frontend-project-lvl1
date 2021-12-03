@@ -28,15 +28,15 @@ const startBrainEven = () => {
     const randomInteger = getRandomInteger(integerLimit);
     printQuestion(randomInteger);
     const userAnswer = getUserAnswer();
-    const booleanUserAnswer = userAnswer === 'yes';
     const correctAnswer = isEven(randomInteger);
-    const userVictory = isAnswerCorrect(booleanUserAnswer, correctAnswer);
+    const userVictory = isAnswerCorrect(userAnswer, correctAnswer, 'string');
 
     if (userVictory === true) {
       log('Correct!');
       wonRoundCount += 1;
     } else {
-      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+      const stringCorrectAnswer = correctAnswer === true ? 'yes' : 'no';
+      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${stringCorrectAnswer}".`);
       log(`Let's try again, ${name}!`);
       break;
     }

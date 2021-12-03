@@ -22,7 +22,14 @@ export const printGameRules = (gameName) => {
   }
 };
 
-export const isAnswerCorrect = (userAnswer, correctAnswer) => userAnswer === correctAnswer;
+export const isAnswerCorrect = (userAnswer, correctAnswer, type) => {
+  if (type === 'string') {
+    const formated = userAnswer === 'yes' || userAnswer === 'no';
+    return (userAnswer === correctAnswer && formated);
+  }
+  return userAnswer === correctAnswer;
+}
+;
 export const printQuestion = (question, optionalQuestion = '') => log(`Question: ${question} ${optionalQuestion}`);
 export const getUserAnswer = () => readlineSync.question('Your answer: ');
 
