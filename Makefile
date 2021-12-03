@@ -7,11 +7,12 @@ brain-games:
 publish:
 	npm publish --dry-run
 
-eslint:
-	npx eslint .
-
 link:
 	sudo npm link
+
+wrap:
+	make publish
+	make link
 
 rec:
 	asciinema rec
@@ -33,3 +34,6 @@ prime:
 
 fix:
 	npx eslint . --fix
+
+eslint:
+	npx eslint .
