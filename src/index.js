@@ -19,6 +19,7 @@ export const printGameRules = (gameName) => {
     case 'brainPrime':
       log('Answer "yes" if given number is prime. Otherwise answer "no".');
       break;
+    default: // это тут из-за правила eslint default-case
   }
 };
 
@@ -29,8 +30,7 @@ export const isAnswerCorrect = (userAnswer, correctAnswer, type) => {
     return (userAnswer === stringCorrectAnswer && formated);
   }
   return userAnswer === correctAnswer;
-}
-;
+};
 export const printQuestion = (question, optionalQuestion = '') => log(`Question: ${question} ${optionalQuestion}`);
 export const getUserAnswer = () => readlineSync.question('Your answer: ');
 
@@ -56,17 +56,20 @@ export const getRandomExpression = (IntegerLimit) => {
 };
 
 export const getCalculation = (leftOperand, operator, rightOperand) => {
+  let answer;
   switch (operator) {
     case '-':
-      return leftOperand - rightOperand;
+      answer = leftOperand - rightOperand;
+      break;
     case '+':
-      return leftOperand + rightOperand;
+      answer = leftOperand + rightOperand;
+      break;
     case '*':
-      return leftOperand * rightOperand;
-      // линтер ругается, что нет consistent return.
-      // я по-злодейски отлючила это правило, нужна консультация
-      // как соблюсти его (если надо).
+      answer = leftOperand * rightOperand;
+      break;
+    default:
   }
+  return answer; // это чудо из-за правила eslint consistent-return
 };
 
 //  vvv Слизала с инернета, сама не смогла за полчаса написать.
