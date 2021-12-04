@@ -27,7 +27,11 @@ const startBrainEven = () => {
     const userAnswer = getUserAnswer();
     const correctAnswer = isEven(randomInteger) === true ? 'yes' : 'no';
     const roundScore = getRoundScore(userAnswer, correctAnswer, name);
-    roundScore === 1 ? wonRoundCount += 1 : breakSignal = true;
+    if (roundScore === 1) {
+      wonRoundCount += 1;
+    } else {
+      breakSignal = true;
+    }
   }
 
   if (wonRoundCount === 3) log(`Congratulations, ${name}!`);

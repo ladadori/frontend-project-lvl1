@@ -19,12 +19,16 @@ const startBrainProgression = () => {
   const maxRoundCount = 3;
   const lengthLimit = 10;
 
-  while (wonRoundCount < maxRoundCount) {
+  while (wonRoundCount < maxRoundCount && !breakSignal) {
     const [, stringProgressionRiddle, correctAnswer] = getProgressionRiddle(lengthLimit);
     printQuestion(stringProgressionRiddle);
     const userAnswer = Number(getUserAnswer());
     const roundScore = getRoundScore(userAnswer, correctAnswer, name);
-    roundScore === 1 ? wonRoundCount += 1 : breakSignal = true;
+    if (roundScore === 1) {
+      wonRoundCount += 1;
+    } else {
+      breakSignal = true;
+    }
   }
 
   if (wonRoundCount === 3) log(`Congratulations, ${name}!`);
