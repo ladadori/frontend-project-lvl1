@@ -1,5 +1,3 @@
-import readlineSync from 'readline-sync';
-
 import {
   log,
   isAnswerCorrect,
