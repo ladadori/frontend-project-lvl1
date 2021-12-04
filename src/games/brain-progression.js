@@ -9,10 +9,10 @@ import {
   getProgressionRiddle,
 } from '../index.js';
 
+import askName from '../cli.js';
+
 const startBrainProgression = () => {
-  log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  log(`Hello, ${name}!`);
+  const name = askName();
 
   printGameRules('brainProgression');
 

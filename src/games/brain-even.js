@@ -9,12 +9,12 @@ import {
   printGameRules,
 } from '../index.js';
 
+import askName from '../cli.js';
+
 const startBrainEven = () => {
   // Нужно записать имя пользователя в пределах области видимости,
   // поэтому не могу спрятать это в printGreeting()
-  log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  log(`Hello, ${name}!`);
+  const name = askName();
 
   printGameRules('brainEven');
 
