@@ -4,7 +4,7 @@ import {
   getUserAnswer,
   printGameRules,
   getProgressionRiddle,
-  getRoundScore
+  getRoundScore,
 } from '../index.js';
 
 import askName from '../cli.js';
@@ -22,7 +22,7 @@ const startBrainProgression = () => {
     const [, stringProgressionRiddle, correctAnswer] = getProgressionRiddle(lengthLimit);
     printQuestion(stringProgressionRiddle);
     const userAnswer = Number(getUserAnswer());
-    wonRoundCount = wonRoundCount + getRoundScore(userAnswer, correctAnswer, name);
+    wonRoundCount += getRoundScore(userAnswer, correctAnswer, name);
   }
 
   if (wonRoundCount === 3) log(`Congratulations, ${name}!`);

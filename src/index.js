@@ -23,9 +23,7 @@ export const printGameRules = (gameName) => {
   }
 };
 
-export const isAnswerCorrect = (userAnswer, correctAnswer) => {
-  return userAnswer === correctAnswer;
-};
+export const isAnswerCorrect = (userAnswer, correctAnswer) => userAnswer === correctAnswer;
 
 export const printQuestion = (question, optionalQuestion = '') => log(`Question: ${question} ${optionalQuestion}`);
 export const getUserAnswer = () => readlineSync.question('Your answer: ');
@@ -108,11 +106,10 @@ export const isPrime = (integer) => { // решение со стак оверф
 export const getRoundScore = (userAnswer, correctAnswer, name) => {
   const userVictory = isAnswerCorrect(userAnswer, correctAnswer);
   if (userVictory === true) {
-  log('Correct!');
-  return 1;
-  } else {
+    log('Correct!');
+    return 1;
+  }
   log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
   log(`Let's try again, ${name}!`);
   return 0;
-  }
 };

@@ -22,10 +22,9 @@ const startBrainCalc = () => {
   while (wonRoundCount < maxRoundCount) {
     const [expression, leftOperand, operator, rightOperand] = getRandomExpression(integerLimit);
     printQuestion(expression);
-    const userAnswer = getUserAnswer();
-    const userAnswerToNumber = Number(userAnswer);
+    const userAnswer = Number(getUserAnswer());
     const correctAnswer = getCalculation(leftOperand, operator, rightOperand);
-    wonRoundCount = wonRoundCount + getRoundScore(userAnswer, correctAnswer, name);
+    wonRoundCount += getRoundScore(userAnswer, correctAnswer, name);
   }
 
   if (wonRoundCount === 3) log(`Congratulations, ${name}!`);

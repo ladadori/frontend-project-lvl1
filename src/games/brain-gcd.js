@@ -25,7 +25,7 @@ const startBrainGcd = () => {
     printQuestion(a, b);
     const userAnswer = Number(getUserAnswer());
     const correctAnswer = gcd(a, b);
-    wonRoundCount = wonRoundCount + getRoundScore(userAnswer, correctAnswer, name);
+    wonRoundCount += getRoundScore(userAnswer, correctAnswer, name);
   }
 
   if (wonRoundCount === 3) log(`Congratulations, ${name}!`);

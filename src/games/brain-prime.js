@@ -24,7 +24,7 @@ const startBrainPrime = () => {
     printQuestion(randomInteger);
     const correctAnswer = isPrime(randomInteger) === true ? 'yes' : 'no';
     const userAnswer = getUserAnswer();
-    wonRoundCount = wonRoundCount + getRoundScore(userAnswer, correctAnswer, name);
+    wonRoundCount += getRoundScore(userAnswer, correctAnswer, name);
   }
 
   if (wonRoundCount === 3) log(`Congratulations, ${name}!`);
