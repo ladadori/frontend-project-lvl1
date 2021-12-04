@@ -16,15 +16,17 @@ const startBrainCalc = () => {
   printGameRules('brainCalc');
 
   let wonRoundCount = 0;
+  let breakSignal = false;
   const maxRoundCount = 3;
   const integerLimit = 10;
 
-  while (wonRoundCount < maxRoundCount) {
+  while (wonRoundCount < maxRoundCount && !breakSignal) {
     const [expression, leftOperand, operator, rightOperand] = getRandomExpression(integerLimit);
     printQuestion(expression);
     const userAnswer = Number(getUserAnswer());
     const correctAnswer = getCalculation(leftOperand, operator, rightOperand);
-    wonRoundCount += getRoundScore(userAnswer, correctAnswer, name);
+    const roundScore = getRoundScore(userAnswer, correctAnswer, name);
+    roundScore === 1 ? wonRoundCount += 1 : breakSignal = true;
   }
 
   if (wonRoundCount === 3) log(`Congratulations, ${name}!`);

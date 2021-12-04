@@ -15,6 +15,7 @@ const startBrainProgression = () => {
   printGameRules('brainProgression');
 
   let wonRoundCount = 0;
+  let breakSignal = false;
   const maxRoundCount = 3;
   const lengthLimit = 10;
 
@@ -22,7 +23,8 @@ const startBrainProgression = () => {
     const [, stringProgressionRiddle, correctAnswer] = getProgressionRiddle(lengthLimit);
     printQuestion(stringProgressionRiddle);
     const userAnswer = Number(getUserAnswer());
-    wonRoundCount += getRoundScore(userAnswer, correctAnswer, name);
+    const roundScore = getRoundScore(userAnswer, correctAnswer, name);
+    roundScore === 1 ? wonRoundCount += 1 : breakSignal = true;
   }
 
   if (wonRoundCount === 3) log(`Congratulations, ${name}!`);

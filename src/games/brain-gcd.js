@@ -16,16 +16,18 @@ const startBrainGcd = () => {
   printGameRules('brainGcd');
 
   let wonRoundCount = 0;
+  let breakSignal = false;
   const maxRoundCount = 3;
   const integerLimit = 10;
 
-  while (wonRoundCount < maxRoundCount) {
+  while (wonRoundCount < maxRoundCount && !breakSignal) {
     const a = getRandomInteger(integerLimit);
     const b = getRandomInteger(integerLimit);
     printQuestion(a, b);
     const userAnswer = Number(getUserAnswer());
     const correctAnswer = gcd(a, b);
-    wonRoundCount += getRoundScore(userAnswer, correctAnswer, name);
+    const roundScore = getRoundScore(userAnswer, correctAnswer, name);
+    roundScore === 1 ? wonRoundCount += 1 : breakSignal = true;
   }
 
   if (wonRoundCount === 3) log(`Congratulations, ${name}!`);

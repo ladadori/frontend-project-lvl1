@@ -16,15 +16,17 @@ const startBrainPrime = () => {
   printGameRules('brainPrime');
 
   let wonRoundCount = 0;
+  let breakSignal = false;
   const maxRoundCount = 3;
   const maxInteger = 10;
 
-  while (wonRoundCount < maxRoundCount) {
+  while (wonRoundCount < maxRoundCount && !breakSignal) {
     const randomInteger = getRandomInteger(maxInteger);
     printQuestion(randomInteger);
     const correctAnswer = isPrime(randomInteger) === true ? 'yes' : 'no';
     const userAnswer = getUserAnswer();
-    wonRoundCount += getRoundScore(userAnswer, correctAnswer, name);
+    const roundScore = getRoundScore(userAnswer, correctAnswer, name);
+    roundScore === 1 ? wonRoundCount += 1 : breakSignal = true;
   }
 
   if (wonRoundCount === 3) log(`Congratulations, ${name}!`);
