@@ -23,7 +23,7 @@ const startBrainCalc = () => {
   while (wonRoundCount < maxRoundCount && !breakSignal) {
     const [expression, leftOperand, operator, rightOperand] = getRandomExpression(integerLimit);
     printQuestion(expression);
-    const userAnswer = getUserAnswer();
+    const userAnswer = Number(getUserAnswer());
     const correctAnswer = getCalculation(leftOperand, operator, rightOperand);
     const roundScore = getRoundScore(userAnswer, correctAnswer, name);
     if (roundScore === 1) {
