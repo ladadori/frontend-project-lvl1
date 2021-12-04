@@ -22,17 +22,15 @@ const startBrainPrime = () => {
   while (wonRoundCount < maxRoundCount) {
     const randomInteger = getRandomInteger(maxInteger);
     printQuestion(randomInteger);
-    const correctAnswer = isPrime(randomInteger);
+    const correctAnswer = isPrime(randomInteger) === true ? 'yes' : 'no';
     const userAnswer = getUserAnswer();
-    // vvv другая игра ломалась, когда убирала тернарник
-    const userVictory = isAnswerCorrect(userAnswer, correctAnswer, 'string');
+    const userVictory = isAnswerCorrect(userAnswer, correctAnswer);
 
     if (userVictory === true) {
       log('Correct!');
       wonRoundCount += 1;
     } else {
-      const stringCorrectAnswer = correctAnswer === true ? 'yes' : 'no';
-      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${stringCorrectAnswer}".`);
+      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
       log(`Let's try again, ${name}!`);
       break;
     }

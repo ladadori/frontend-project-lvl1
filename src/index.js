@@ -23,14 +23,10 @@ export const printGameRules = (gameName) => {
   }
 };
 
-export const isAnswerCorrect = (userAnswer, correctAnswer, type) => {
-  if (type === 'string') {
-    const stringCorrectAnswer = correctAnswer === true ? 'yes' : 'no';
-    const formated = userAnswer === 'yes' || userAnswer === 'no';
-    return (userAnswer === stringCorrectAnswer && formated);
-  }
+export const isAnswerCorrect = (userAnswer, correctAnswer) => {
   return userAnswer === correctAnswer;
 };
+
 export const printQuestion = (question, optionalQuestion = '') => log(`Question: ${question} ${optionalQuestion}`);
 export const getUserAnswer = () => readlineSync.question('Your answer: ');
 
