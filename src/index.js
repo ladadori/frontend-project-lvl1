@@ -104,3 +104,15 @@ export const isPrime = (integer) => { // решение со стак оверф
   }
   return integer > 1;
 };
+
+export const getRoundScore = (userAnswer, correctAnswer, name) => {
+  const userVictory = isAnswerCorrect(userAnswer, correctAnswer);
+  if (userVictory === true) {
+  log('Correct!');
+  return 1;
+  } else {
+  log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+  log(`Let's try again, ${name}!`);
+  return 0;
+  }
+};

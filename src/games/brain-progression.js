@@ -1,10 +1,10 @@
 import {
   log,
-  isAnswerCorrect,
   printQuestion,
   getUserAnswer,
   printGameRules,
   getProgressionRiddle,
+  getRoundScore
 } from '../index.js';
 
 import askName from '../cli.js';
@@ -22,16 +22,7 @@ const startBrainProgression = () => {
     const [, stringProgressionRiddle, correctAnswer] = getProgressionRiddle(lengthLimit);
     printQuestion(stringProgressionRiddle);
     const userAnswer = Number(getUserAnswer());
-    const userVictory = isAnswerCorrect(userAnswer, correctAnswer);
-
-    if (userVictory === true) {
-      log('Correct!');
-      wonRoundCount += 1;
-    } else {
-      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      log(`Let's try again, ${name}!`);
-      break;
-    }
+    wonRoundCount = wonRoundCount + getRoundScore(userAnswer, correctAnswer, name);
   }
 
   if (wonRoundCount === 3) log(`Congratulations, ${name}!`);

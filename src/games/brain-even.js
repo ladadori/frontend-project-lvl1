@@ -1,10 +1,10 @@
 import {
   log,
-  isAnswerCorrect,
   printQuestion,
   getUserAnswer,
   getRandomInteger,
   printGameRules,
+  getRoundScore,
 } from '../index.js';
 
 import askName from '../cli.js';
@@ -27,16 +27,7 @@ const startBrainEven = () => {
     printQuestion(randomInteger);
     const userAnswer = getUserAnswer();
     const correctAnswer = isEven(randomInteger) === true ? 'yes' : 'no';
-    const userVictory = isAnswerCorrect(userAnswer, correctAnswer);
-
-    if (userVictory === true) {
-      log('Correct!');
-      wonRoundCount += 1;
-    } else {
-      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      log(`Let's try again, ${name}!`);
-      break;
-    }
+    wonRoundCount = wonRoundCount + getRoundScore(userAnswer, correctAnswer, name);
   }
 
   if (wonRoundCount === 3) log(`Congratulations, ${name}!`);

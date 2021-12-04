@@ -1,11 +1,11 @@
 import {
   log,
-  isAnswerCorrect,
   printQuestion,
   getUserAnswer,
   gcd,
   printGameRules,
   getRandomInteger,
+  getRoundScore,
 } from '../index.js';
 
 import askName from '../cli.js';
@@ -25,16 +25,7 @@ const startBrainGcd = () => {
     printQuestion(a, b);
     const userAnswer = Number(getUserAnswer());
     const correctAnswer = gcd(a, b);
-    const userVictory = isAnswerCorrect(userAnswer, correctAnswer);
-
-    if (userVictory === true) {
-      log('Correct!');
-      wonRoundCount += 1;
-    } else {
-      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      log(`Let's try again, ${name}!`);
-      break;
-    }
+    wonRoundCount = wonRoundCount + getRoundScore(userAnswer, correctAnswer, name);
   }
 
   if (wonRoundCount === 3) log(`Congratulations, ${name}!`);
