@@ -1,40 +1,17 @@
 import {
-  log,
-  printQuestion,
-  getUserAnswer,
   getRandomInteger,
-  printGameRules,
-  getRoundScore,
+  runGameEngine,
 } from '../index.js';
 
-import askName from '../cli.js';
-
 const startBrainEven = () => {
-  const name = askName();
+  const gameRule = 'Answer "yes" if the number is even, otherwise answer "no"';
+  const maxNum = 20;
 
-  printGameRules('brainEven');
+  const isEven = (num) => num % 2 === 0;
+  const getQuestion = () => getRandomInteger(maxNum);
+  const getCorrectAnswer = (integer) => isEven(integer) ? 'yes' : 'no';
 
-  let wonRoundCount = 0;
-  let breakSignal = false;
-  const maxRoundCount = 3;
-  const integerLimit = 50;
-
-  const isEven = (integer) => integer % 2 === 0;
-
-  while (wonRoundCount < maxRoundCount && !breakSignal) {
-    const randomInteger = getRandomInteger(integerLimit);
-    printQuestion(randomInteger);
-    const userAnswer = getUserAnswer();
-    const correctAnswer = isEven(randomInteger) === true ? 'yes' : 'no';
-    const roundScore = getRoundScore(userAnswer, correctAnswer, name);
-    if (roundScore === 1) {
-      wonRoundCount += 1;
-    } else {
-      breakSignal = true;
-    }
-  }
-
-  if (wonRoundCount === 3) log(`Congratulations, ${name}!`);
+  runGameEngine(gameRule, getQuestion, getCorrectAnswer);
 };
 
 export default startBrainEven;
