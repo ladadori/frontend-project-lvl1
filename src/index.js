@@ -10,7 +10,7 @@ export const getRandomInteger = (max, min = 0) => {
 };
 
 export const runGameEngine = (gameRule, question, correctAnswer) => {
-  
+
   const maxRoundCount = 3;
   let roundCount = 0
 
@@ -24,6 +24,7 @@ export const runGameEngine = (gameRule, question, correctAnswer) => {
     const userVictory = userAnswer === correctAnswer;
 
     if (userVictory === false) {
+      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
       log(sorry);
       break;
     }
