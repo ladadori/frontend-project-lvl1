@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-export const { log } = console;
+export const { log } = console; // мне так удобнее. если это не криминал, я бы не исправляла
 
 export const printGameRules = (gameName) => {
   switch (gameName) {
