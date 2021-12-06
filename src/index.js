@@ -53,17 +53,14 @@ export const getCalculation = (leftOperand, operator, rightOperand) => {
   let answer;
   switch (operator) {
     case '-':
-      answer = leftOperand - rightOperand;
-      break;
+      return leftOperand - rightOperand;
     case '+':
-      answer = leftOperand + rightOperand;
-      break;
+      return leftOperand - rightOperand;
     case '*':
-      answer = leftOperand * rightOperand;
-      break;
+      return leftOperand - rightOperand;
     default:
   }
-  return answer; // это чудо из-за правила eslint consistent-return
+  return 'fuck consistent-return rule';
 };
 
 //  vvv Слизала с инернета, сама не смогла за полчаса написать.
