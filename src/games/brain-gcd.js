@@ -1,40 +1,41 @@
 import {
-  log,
-  printQuestion,
-  getUserAnswer,
-  gcd,
-  printGameRules,
   getRandomInteger,
-  getRoundScore,
+  log,
+  runGameEngine,
 } from '../index.js';
 
-import askName from '../cli.js';
-
 const startBrainGcd = () => {
-  const name = askName();
+  const gameRule = 'Find the greatest common divisor of given numbers.';
+  const maxNum = 20;
 
-  printGameRules('brainGcd');
+  const getQuestion = () => {
+    const [firstNum, secondNum] = [getRandomInteger(maxNum), getRandomInteger(maxNum)];
+    const stringNumPair = `${firstNum} ${secondNum}`;
+    return stringNumPair;
+  };
 
-  let wonRoundCount = 0;
-  let breakSignal = false;
-  const maxRoundCount = 3;
-  const integerLimit = 10;
+  const getCorrectAnswer = (stringNumPair) => {
 
-  while (wonRoundCount < maxRoundCount && !breakSignal) {
-    const a = getRandomInteger(integerLimit);
-    const b = getRandomInteger(integerLimit);
-    printQuestion(a, b);
-    const userAnswer = Number(getUserAnswer());
-    const correctAnswer = gcd(a, b);
-    const roundScore = getRoundScore(userAnswer, correctAnswer, name);
-    if (roundScore === 1) {
-      wonRoundCount += 1;
-    } else {
-      breakSignal = true;
-    }
-  }
+    const getGCD = (a, b) => (b === 0 ? a : getGCD(b, a % b));
 
-  if (wonRoundCount === 3) log(`Congratulations, ${name}!`);
+    const getNumPair = (stringNumPair) => {
+      
+      const [stringFirstNum, stringSecondNum] = stringNumPair.split(' ');
+      const [firstNum, secondNum] = [Number(stringFirstNum), Number(stringSecondNum)];
+      const arrayNumPair = [firstNum, secondNum];
+      return arrayNumPair;
+    };
+
+    const arrayNumPair = getNumPair(stringNumPair);
+    const [a, b] = arrayNumPair;
+    const correctAnswer = getGCD(a, b);
+    const stringCorrectAnswer = correctAnswer.toString();
+    return stringCorrectAnswer;
+
+  };
+  
+  runGameEngine(gameRule, getQuestion, getCorrectAnswer);
+  
 };
 
 export default startBrainGcd;
