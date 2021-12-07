@@ -59,7 +59,7 @@ const startBrainProgression = () => {
     if (hiddenNumberIndex === lastNumberIndex) {
       const indexBeforeHidden = hiddenNumberIndex - 1;
       const numberBeforeHidden = arrayProgressionRiddle[indexBeforeHidden];
-      hiddenNumber = numberBeforeHidden - step;
+      hiddenNumber = numberBeforeHidden + step;
     }
 
     return hiddenNumber.toString();
