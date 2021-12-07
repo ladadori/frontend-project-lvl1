@@ -36,6 +36,6 @@ export const runGameEngine = (gameRule, getQuestion, getCorrectAnswer) => {
   }
 
   if (roundCount === 3) {
-    log(`Congratulations, ${name}`);
+    log(`Congratulations, ${name}!`);
   }
 };
