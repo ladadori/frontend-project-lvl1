@@ -22,7 +22,7 @@ const startBrainCalc = () => {
   };
 
   const getCalculation = (expressionCollection) => {
-    const [leftOperand, operator, rightOperand] = expressionCollection; 
+    const [leftOperand, operator, rightOperand] = expressionCollection;
     switch (operator) {
       case '-':
         return leftOperand - rightOperand;
@@ -41,7 +41,7 @@ const startBrainCalc = () => {
     const stringExpression = `${leftOperand} ${operator} ${rightOperand}`;
     return stringExpression;
   };
-  
+
   const getCorrectAnswer = (stringExpression) => {
     const expressionCollection = stringExpression.split(' ');
     const correctAnswer = getCalculation(expressionCollection);

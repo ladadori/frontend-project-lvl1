@@ -9,7 +9,7 @@ const startBrainEven = () => {
 
   const isEven = (num) => num % 2 === 0;
   const getQuestion = () => getRandomInteger(maxNum);
-  const getCorrectAnswer = (integer) => isEven(integer) ? 'yes' : 'no';
+  const getCorrectAnswer = (integer) => (isEven(integer) ? 'yes' : 'no');
 
   runGameEngine(gameRule, getQuestion, getCorrectAnswer);
 };

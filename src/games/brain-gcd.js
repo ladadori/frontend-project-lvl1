@@ -1,6 +1,5 @@
 import {
   getRandomInteger,
-  log,
   runGameEngine,
 } from '../index.js';
 
@@ -15,12 +14,10 @@ const startBrainGcd = () => {
   };
 
   const getCorrectAnswer = (stringNumPair) => {
-
     const getGCD = (a, b) => (b === 0 ? a : getGCD(b, a % b));
 
-    const getNumPair = (stringNumPair) => {
-      
-      const [stringFirstNum, stringSecondNum] = stringNumPair.split(' ');
+    const getNumPair = (numPair) => {
+      const [stringFirstNum, stringSecondNum] = numPair.split(' ');
       const [firstNum, secondNum] = [Number(stringFirstNum), Number(stringSecondNum)];
       const arrayNumPair = [firstNum, secondNum];
       return arrayNumPair;
@@ -31,11 +28,9 @@ const startBrainGcd = () => {
     const correctAnswer = getGCD(a, b);
     const stringCorrectAnswer = correctAnswer.toString();
     return stringCorrectAnswer;
-
   };
-  
+
   runGameEngine(gameRule, getQuestion, getCorrectAnswer);
-  
 };
 
 export default startBrainGcd;

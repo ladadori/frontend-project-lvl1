@@ -4,75 +4,75 @@ import {
 } from '../index.js';
 
 const startBrainProgression = () => {
+  const gameRule = 'What number is missing in the progression?';
 
-const gameRule = 'What number is missing in the progression?';
+  const progressionLengthLimit = 10;
+  const step = 2;
 
-const progressionLengthLimit = 10;
-const step = 2;
-
-const getProgression = (progressionLengthLimit) => {
-  const startNumber = getRandomInteger(30);
-  const progression = [startNumber];
-  let lastNumberIndex = 0;
-  while (progression.length < progressionLengthLimit) {
-    progression.push(progression[lastNumberIndex] + step);
-    lastNumberIndex += 1;
-  }
-  return progression;
-};
-
-const getProgressionRiddle = (progression) => {
-  const blankIndex = getRandomInteger(progressionLengthLimit);
-  const progressionRiddle = progression.slice(0);
-  progressionRiddle[blankIndex] = '..';
-  return progressionRiddle;
-};
-
-// Учим машину искать скрытое число, поскольку движок никогда не
-// получает готовый ответ, он всегда сам вычисляет его.
-
-const getHiddenNumber = (progressionRiddle) => {
-
-  const stringArrayProgressionRiddle = progressionRiddle.split(' ');
-  const arrayProgressionRiddle = [];
-  let hiddenNumberIndex = 0;
-  let hiddenNumber;
-
-  for (const word of stringArrayProgressionRiddle) {
-    arrayProgressionRiddle.push(Number(word));
-  }
-
-  for (const word of stringArrayProgressionRiddle) {
-    if (word === '..') {
-      hiddenNumberIndex = stringArrayProgressionRiddle.indexOf(word);
+  const getProgression = (maxLength) => {
+    const startNumber = getRandomInteger(30);
+    const progression = [startNumber];
+    let lastNumberIndex = 0;
+    while (progression.length < maxLength) {
+      progression.push(progression[lastNumberIndex] + step);
+      lastNumberIndex += 1;
     }
-  }
-  
-  const lastNumberIndex = progressionLengthLimit - 1;
+    return progression;
+  };
 
-  if (hiddenNumberIndex < lastNumberIndex) {
-    const indexAfterHidden = hiddenNumberIndex + 1;
-    const numberAfterHidden = arrayProgressionRiddle[indexAfterHidden];
-    hiddenNumber = numberAfterHidden - step;
-  } else {
-    const indexBeforeHidden = hiddenNumberIndex - 1;
-    const numberBeforeHidden = arrayProgressionRiddle[indexBeforeHidden];
-    hiddenNumber = numberBeforeHidden - step;
-  }
+  const getProgressionRiddle = (progression) => {
+    const blankIndex = getRandomInteger(progressionLengthLimit);
+    const progressionRiddle = progression.slice(0);
+    progressionRiddle[blankIndex] = '..';
+    return progressionRiddle;
+  };
 
-  return hiddenNumber.toString();
-};
+  // Учим машину искать скрытое число, поскольку движок никогда не
+  // получает готовый ответ, он всегда сам вычисляет его.
 
-const getQuestion = () => {
-  const progression = getProgression(progressionLengthLimit);
-  const progressionRiddle = getProgressionRiddle(progression);
-  const progressionRiddleString = progressionRiddle.join(' ');
-  return progressionRiddleString;
-};
+  const getHiddenNumber = (progressionRiddle) => {
+    const stringArrayProgressionRiddle = progressionRiddle.split(' ');
+    const arrayProgressionRiddle = [];
+    let hiddenNumberIndex = 0;
+    let hiddenNumber;
 
-const getCorrectAnswer = (progressionRiddleString) => getHiddenNumber(progressionRiddleString);
+    /* eslint-disable-next-line */
+    for (const word of stringArrayProgressionRiddle) {
+      arrayProgressionRiddle.push(Number(word));
+    }
 
-runGameEngine(gameRule, getQuestion, getCorrectAnswer);
+    /* eslint-disable-next-line */
+    for (const word of stringArrayProgressionRiddle) {
+      if (word === '..') {
+        hiddenNumberIndex = stringArrayProgressionRiddle.indexOf(word);
+      }
+    }
+
+    const lastNumberIndex = progressionLengthLimit - 1;
+
+    if (hiddenNumberIndex < lastNumberIndex) {
+      const indexAfterHidden = hiddenNumberIndex + 1;
+      const numberAfterHidden = arrayProgressionRiddle[indexAfterHidden];
+      hiddenNumber = numberAfterHidden - step;
+    } else {
+      const indexBeforeHidden = hiddenNumberIndex - 1;
+      const numberBeforeHidden = arrayProgressionRiddle[indexBeforeHidden];
+      hiddenNumber = numberBeforeHidden - step;
+    }
+
+    return hiddenNumber.toString();
+  };
+
+  const getQuestion = () => {
+    const progression = getProgression(progressionLengthLimit);
+    const progressionRiddle = getProgressionRiddle(progression);
+    const progressionRiddleString = progressionRiddle.join(' ');
+    return progressionRiddleString;
+  };
+
+  const getCorrectAnswer = (progressionRiddleString) => getHiddenNumber(progressionRiddleString);
+
+  runGameEngine(gameRule, getQuestion, getCorrectAnswer);
 };
 
 export default startBrainProgression;
