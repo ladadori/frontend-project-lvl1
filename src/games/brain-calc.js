@@ -27,9 +27,9 @@ const startBrainCalc = () => {
       case '-':
         return leftOperand - rightOperand;
       case '+':
-        return leftOperand - rightOperand;
+        return leftOperand + rightOperand;
       case '*':
-        return leftOperand - rightOperand;
+        return leftOperand * rightOperand;
       default:
     }
     return 'fuck consistent-return rule';
