@@ -1,39 +1,54 @@
 import {
-  log,
-  printQuestion,
-  getUserAnswer,
-  getRandomExpression,
-  getCalculation,
-  printGameRules,
-  getRoundScore,
+  getRandomInteger,
+  runGameEngine,
 } from '../index.js';
 
-import askName from '../cli.js';
-
 const startBrainCalc = () => {
-  const name = askName();
+  const gameRule = 'Answer "yes" if the number is even, otherwise answer "no"';
+  const maxNum = 10;
 
-  printGameRules('brainCalc');
+  const getRandomExpression = (IntegerLimit) => {
+    const leftOperand = getRandomInteger(IntegerLimit);
+    const rightOperand = getRandomInteger(IntegerLimit);
+    const operators = ['+', '-', '*'];
+    const getRandomOperator = () => {
+      const indexOfOperator = getRandomInteger(3);
+      const operator = operators[indexOfOperator];
+      return operator;
+    };
+    const operator = getRandomOperator();
+    const expressionCollection = [leftOperand, operator, rightOperand];
+    return expressionCollection;
+  };
 
-  let wonRoundCount = 0;
-  let breakSignal = false;
-  const maxRoundCount = 3;
-  const integerLimit = 10;
-
-  while (wonRoundCount < maxRoundCount && !breakSignal) {
-    const [expression, leftOperand, operator, rightOperand] = getRandomExpression(integerLimit);
-    printQuestion(expression);
-    const userAnswer = Number(getUserAnswer());
-    const correctAnswer = getCalculation(leftOperand, operator, rightOperand);
-    const roundScore = getRoundScore(userAnswer, correctAnswer, name);
-    if (roundScore === 1) {
-      wonRoundCount += 1;
-    } else {
-      breakSignal = true;
+  const getCalculation = (expressionCollection) => {
+    const [leftOperand, operator, rightOperand] = expressionCollection; 
+    switch (operator) {
+      case '-':
+        return leftOperand - rightOperand;
+      case '+':
+        return leftOperand - rightOperand;
+      case '*':
+        return leftOperand - rightOperand;
+      default:
     }
-  }
+    return 'fuck consistent-return rule';
+  };
 
-  if (wonRoundCount === 3) log(`Congratulations, ${name}!`);
+  const getQuestion = () => {
+    const expressionCollection = getRandomExpression(maxNum);
+    const [leftOperand, operator, rightOperand] = expressionCollection;
+    const stringExpression = `${leftOperand} ${operator} ${rightOperand}`;
+    return stringExpression;
+  };
+  
+  const getCorrectAnswer = (stringExpression) => {
+    const expressionCollection = stringExpression.split(' ');
+    const correctAnswer = getCalculation(expressionCollection);
+    return correctAnswer.toString();
+  };
+
+  runGameEngine(gameRule, getQuestion, getCorrectAnswer);
 };
 
 export default startBrainCalc;
