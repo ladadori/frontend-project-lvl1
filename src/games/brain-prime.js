@@ -1,39 +1,28 @@
 import {
-  log,
-  printQuestion,
-  getUserAnswer,
-  printGameRules,
   getRandomInteger,
-  isPrime,
-  getRoundScore,
+  runGameEngine,
 } from '../index.js';
 
-import askName from '../cli.js';
+
 
 const startBrainPrime = () => {
-  const name = askName();
+  const gameRule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  const maxNum = 10;
 
-  printGameRules('brainPrime');
-
-  let wonRoundCount = 0;
-  let breakSignal = false;
-  const maxRoundCount = 3;
-  const maxInteger = 10;
-
-  while (wonRoundCount < maxRoundCount && !breakSignal) {
-    const randomInteger = getRandomInteger(maxInteger);
-    printQuestion(randomInteger);
-    const correctAnswer = isPrime(randomInteger) === true ? 'yes' : 'no';
-    const userAnswer = getUserAnswer();
-    const roundScore = getRoundScore(userAnswer, correctAnswer, name);
-    if (roundScore === 1) {
-      wonRoundCount += 1;
-    } else {
-      breakSignal = true;
+  const isPrime = (integer) => {
+    const squareOfInteger = Math.sqrt(integer);
+    for (let i = 2; i <= squareOfInteger; i += 1) {
+      if (integer % i === 0) {
+        return false;
+      }
     }
-  }
+    return integer > 1;
+  };
 
-  if (wonRoundCount === 3) log(`Congratulations, ${name}!`);
+  const getQuestion = () => getRandomInteger(maxNum);
+  const getCorrectAnswer = (integer) => (isPrime(integer) ? 'yes' : 'no');
+
+  runGameEngine(gameRule, getQuestion, getCorrectAnswer);
 };
 
 export default startBrainPrime;
