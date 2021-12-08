@@ -10,7 +10,7 @@ const startBrainProgression = () => {
   const step = 2;
 
   const getProgression = (maxLength) => {
-    const startNumber = getRandomInteger(30);
+    const startNumber = getRandomInteger(undefined, 30);
     const progression = [startNumber];
     let lastNumberIndex = 0;
     while (progression.length < maxLength) {
@@ -21,7 +21,7 @@ const startBrainProgression = () => {
   };
 
   const getProgressionRiddle = (progression) => {
-    const blankIndex = getRandomInteger(progressionLengthLimit);
+    const blankIndex = getRandomInteger(undefined, progressionLengthLimit);
     const progressionRiddle = progression.slice(0);
     progressionRiddle[blankIndex] = '..';
     return progressionRiddle;

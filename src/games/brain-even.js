@@ -8,7 +8,7 @@ const startBrainEven = () => {
   const maxNum = 20;
 
   const isEven = (num) => num % 2 === 0;
-  const getQuestion = () => getRandomInteger(maxNum);
+  const getQuestion = () => getRandomInteger(undefined, maxNum);
   const getCorrectAnswer = (integer) => (isEven(integer) ? 'yes' : 'no');
 
   runGameEngine(gameRule, getQuestion, getCorrectAnswer);

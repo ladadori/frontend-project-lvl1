@@ -17,7 +17,7 @@ const startBrainPrime = () => {
     return integer > 1;
   };
 
-  const getQuestion = () => getRandomInteger(maxNum);
+  const getQuestion = () => getRandomInteger(undefined, maxNum);
   const getCorrectAnswer = (integer) => (isPrime(integer) ? 'yes' : 'no');
 
   runGameEngine(gameRule, getQuestion, getCorrectAnswer);

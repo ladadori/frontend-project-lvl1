@@ -8,11 +8,11 @@ const startBrainCalc = () => {
   const maxNum = 10;
 
   const getRandomExpression = (IntegerLimit) => {
-    const leftOperand = getRandomInteger(IntegerLimit);
-    const rightOperand = getRandomInteger(IntegerLimit);
+    const leftOperand = getRandomInteger(undefined, IntegerLimit);
+    const rightOperand = getRandomInteger(undefined, IntegerLimit);
     const operators = ['+', '-', '*'];
     const getRandomOperator = () => {
-      const indexOfOperator = getRandomInteger(3);
+      const indexOfOperator = getRandomInteger(undefined, 3);
       const operator = operators[indexOfOperator];
       return operator;
     };
