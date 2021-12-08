@@ -6,10 +6,10 @@ export const getRandomInteger = (min = 1, max = 100) => {
   return Math.floor(Math.random() * (maxNum - minNum)) + minNum;
 };
 
-export const runGameEngine = (gameRule, getQuestion, getCorrectAnswer) => {
+export const runGameEngine = (gameRule, getRoundData) => {
   const maxRoundCount = 3;
   let roundCount = 0; // если убрать в цикл, то непонятно, как
-  // проверить, что игрок выиграл три раунда (см. стр. 39)
+  // проверить, что игрок выиграл три раунда (см. стр. ...)
 
   console.log('Welcome to the Brain Games!');
 
@@ -19,12 +19,10 @@ export const runGameEngine = (gameRule, getQuestion, getCorrectAnswer) => {
   console.log(gameRule);
 
   for (; roundCount < maxRoundCount; roundCount += 1) {
-    const question = getQuestion();
+    
+    const [question, correctAnswer] = getRoundData();
     console.log(`Question: ${question}`);
-
     const userAnswer = readlineSync.question('Your answer: ');
-    const correctAnswer = getCorrectAnswer(question);
-
     const userVictory = userAnswer === correctAnswer;
 
     if (userVictory === false) {
