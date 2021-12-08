@@ -19,7 +19,6 @@ export const runGameEngine = (gameRule, getRoundData) => {
   console.log(gameRule);
 
   for (; roundCount < maxRoundCount; roundCount += 1) {
-    
     const [question, correctAnswer] = getRoundData();
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');

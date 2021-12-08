@@ -9,72 +9,34 @@ const startBrainProgression = () => {
   const progressionLengthLimit = 10;
   const step = 2;
 
-  const getProgression = (maxLength) => {
-    const startNumber = getRandomInteger(undefined, 30);
-    const progression = [startNumber];
-    let lastNumberIndex = 0;
-    while (progression.length < maxLength) {
-      progression.push(progression[lastNumberIndex] + step);
-      lastNumberIndex += 1;
-    }
-    return progression;
-  };
-
-  const getProgressionRiddle = (progression) => {
-    const blankIndex = getRandomInteger(undefined, progressionLengthLimit);
-    const progressionRiddle = progression.slice(0);
-    progressionRiddle[blankIndex] = '..';
-    return progressionRiddle;
-  };
-
-  // Учим машину искать скрытое число, поскольку движок никогда не
-  // получает готовый ответ, он всегда сам вычисляет его.
-
-  const getHiddenNumber = (progressionRiddle) => {
-    const stringArrayProgressionRiddle = progressionRiddle.split(' ');
-    const arrayProgressionRiddle = [];
-    let hiddenNumberIndex = 0;
-    let hiddenNumber;
-
-    /* eslint-disable-next-line */
-    for (const word of stringArrayProgressionRiddle) {
-      arrayProgressionRiddle.push(Number(word));
-    }
-
-    /* eslint-disable-next-line */
-    for (const word of stringArrayProgressionRiddle) {
-      if (word === '..') {
-        hiddenNumberIndex = stringArrayProgressionRiddle.indexOf(word);
+  const getGameData = () => {
+    const getProgression = (maxLength) => {
+      const startNumber = getRandomInteger(undefined, 30);
+      const progression = [startNumber];
+      let lastNumberIndex = 0;
+      while (progression.length < maxLength) {
+        progression.push(progression[lastNumberIndex] + step);
+        lastNumberIndex += 1;
       }
-    }
+      return progression;
+    };
 
-    const lastNumberIndex = progressionLengthLimit - 1;
+    const getProgressionRiddle = (progression) => {
+      const blankIndex = getRandomInteger(undefined, progressionLengthLimit);
+      const hiddenNumber = progression[blankIndex];
+      const progressionRiddle = progression.slice(0);
+      progressionRiddle[blankIndex] = '..';
+      return [progressionRiddle, hiddenNumber];
+    };
 
-    if (hiddenNumberIndex < lastNumberIndex) {
-      const indexAfterHidden = hiddenNumberIndex + 1;
-      const numberAfterHidden = arrayProgressionRiddle[indexAfterHidden];
-      hiddenNumber = numberAfterHidden - step;
-    }
-
-    if (hiddenNumberIndex === lastNumberIndex) {
-      const indexBeforeHidden = hiddenNumberIndex - 1;
-      const numberBeforeHidden = arrayProgressionRiddle[indexBeforeHidden];
-      hiddenNumber = numberBeforeHidden + step;
-    }
-
-    return hiddenNumber.toString();
-  };
-
-  const getQuestion = () => {
     const progression = getProgression(progressionLengthLimit);
-    const progressionRiddle = getProgressionRiddle(progression);
+    const [progressionRiddle, hiddenNumber] = getProgressionRiddle(progression);
     const progressionRiddleString = progressionRiddle.join(' ');
-    return progressionRiddleString;
+    const hiddenNumberString = hiddenNumber.toString();
+    return [progressionRiddleString, hiddenNumberString];
   };
 
-  const getCorrectAnswer = (progressionRiddleString) => getHiddenNumber(progressionRiddleString);
-
-  runGameEngine(gameRule, getQuestion, getCorrectAnswer);
+  runGameEngine(gameRule, getGameData);
 };
 
 export default startBrainProgression;

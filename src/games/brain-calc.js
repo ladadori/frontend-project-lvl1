@@ -35,20 +35,27 @@ const startBrainCalc = () => {
     return 'fuck consistent-return rule';
   };
 
-  const getQuestion = () => {
-    const expressionCollection = getRandomExpression(maxNum);
-    const [leftOperand, operator, rightOperand] = expressionCollection;
-    const stringExpression = `${leftOperand} ${operator} ${rightOperand}`;
-    return stringExpression;
+  const getGameData = () => {
+    const getQuestion = () => {
+      const expressionCollection = getRandomExpression(maxNum);
+      const [leftOperand, operator, rightOperand] = expressionCollection;
+      const stringExpression = `${leftOperand} ${operator} ${rightOperand}`;
+      return stringExpression;
+    };
+
+    const getCorrectAnswer = (stringExpression) => {
+      const expressionCollection = stringExpression.split(' ');
+      const correctAnswer = getCalculation(expressionCollection);
+      return correctAnswer.toString();
+    };
+
+    const question = getQuestion();
+    const correctAnswer = getCorrectAnswer(question);
+    const gameDataCollection = [question, correctAnswer];
+    return gameDataCollection;
   };
 
-  const getCorrectAnswer = (stringExpression) => {
-    const expressionCollection = stringExpression.split(' ');
-    const correctAnswer = getCalculation(expressionCollection);
-    return correctAnswer.toString();
-  };
-
-  runGameEngine(gameRule, getQuestion, getCorrectAnswer);
+  runGameEngine(gameRule, getGameData);
 };
 
 export default startBrainCalc;

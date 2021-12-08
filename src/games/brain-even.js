@@ -7,11 +7,14 @@ const startBrainEven = () => {
   const gameRule = 'Answer "yes" if the number is even, otherwise answer "no"';
   const maxNum = 20;
 
-  const isEven = (num) => num % 2 === 0;
-  const getQuestion = () => getRandomInteger(undefined, maxNum);
-  const getCorrectAnswer = (integer) => (isEven(integer) ? 'yes' : 'no');
+  const getGameData = () => {
+    const isEven = (num) => num % 2 === 0;
+    const question = getRandomInteger(undefined, maxNum);
+    const correctAnswer = (isEven(question) ? 'yes' : 'no');
+    const gameDataCollection = [question, correctAnswer];
+    return gameDataCollection;
+  };
 
-  runGameEngine(gameRule, getQuestion, getCorrectAnswer);
+  runGameEngine(gameRule, getGameData);
 };
-
 export default startBrainEven;
