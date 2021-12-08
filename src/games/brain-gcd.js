@@ -8,7 +8,8 @@ const startBrainGcd = () => {
   const maxNum = 20;
 
   const getQuestion = () => {
-    const [firstNum, secondNum] = [getRandomInteger(undefined, maxNum), getRandomInteger(undefined, maxNum)];
+    const firstNum = getRandomInteger(undefined, maxNum);
+    const secondNum = getRandomInteger(undefined, maxNum);
     const stringNumPair = `${firstNum} ${secondNum}`;
     return stringNumPair;
   };
