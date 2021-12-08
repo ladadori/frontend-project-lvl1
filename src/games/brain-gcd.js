@@ -3,6 +3,8 @@ import {
   runGameEngine,
 } from '../index.js';
 
+const getGCD = (a, b) => (b === 0 ? a : getGCD(b, a % b));
+
 const startBrainGcd = () => {
   const gameRule = 'Find the greatest common divisor of given numbers.';
   const maxNum = 20;
@@ -15,8 +17,6 @@ const startBrainGcd = () => {
   };
 
   const getCorrectAnswer = (stringNumPair) => {
-    const getGCD = (a, b) => (b === 0 ? a : getGCD(b, a % b));
-
     const getNumPair = (numPair) => {
       const [stringFirstNum, stringSecondNum] = numPair.split(' ');
       const [firstNum, secondNum] = [Number(stringFirstNum), Number(stringSecondNum)];
