@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import askName from './cli.js';
+
 
 export const { log } = console; // мне так удобнее. если это не криминал, я бы не удаляла
 
@@ -14,7 +14,10 @@ export const runGameEngine = (gameRule, getQuestion, getCorrectAnswer) => {
   let roundCount = 0;
 
   log('Welcome to the Brain Games!');
-  const name = askName();
+
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!`);
+
   log(gameRule);
 
   for (; roundCount < maxRoundCount; roundCount += 1) {
