@@ -1,8 +1,5 @@
 import readlineSync from 'readline-sync';
 
-
-export const { log } = console; // мне так удобнее. если это не криминал, я бы не удаляла
-
 export const getRandomInteger = (max = 100, min = 1) => {
   const minNum = Math.ceil(min);
   const maxNum = Math.floor(max);
@@ -13,16 +10,16 @@ export const runGameEngine = (gameRule, getQuestion, getCorrectAnswer) => {
   const maxRoundCount = 3;
   let roundCount = 0;
 
-  log('Welcome to the Brain Games!');
+  console.log('Welcome to the Brain Games!');
 
   const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
+  console.console.log(`Hello, ${name}!`);
 
-  log(gameRule);
+  console.log(gameRule);
 
   for (; roundCount < maxRoundCount; roundCount += 1) {
     const question = getQuestion();
-    log(`Question: ${question}`);
+    console.log(`Question: ${question}`);
 
     const userAnswer = readlineSync.question('Your answer: ');
     const correctAnswer = getCorrectAnswer(question);
@@ -30,15 +27,15 @@ export const runGameEngine = (gameRule, getQuestion, getCorrectAnswer) => {
     const userVictory = userAnswer === correctAnswer;
 
     if (userVictory === false) {
-      log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      log(`Let's try again, ${name}!`);
+      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+      console.log(`Let's try again, ${name}!`);
       break;
     }
 
-    log('Correct!');
+    console.log('Correct!');
   }
 
   if (roundCount === 3) {
-    log(`Congratulations, ${name}!`);
+    console.log(`Congratulations, ${name}!`);
   }
 };
