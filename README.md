@@ -9,6 +9,13 @@
 
 # Hi! This is study project for Hexlet online school of programming. We have five games for CLI:
 
+## Installation:
+
+1. Clone repo
+2. Run `npm ci` command to install dependencies
+3. Run `sudo npm link` in directory of cloned repo
+4. Use name of the game (see below) to run a game
+
 ### Brain-even game:
 
 [![asciicast](https://asciinema.org/a/453114.svg)](https://asciinema.org/a/453114)
