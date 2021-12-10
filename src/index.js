@@ -11,10 +11,14 @@ export const runGameEngine = (gameRule, getRoundData) => {
   let roundCount = 0; // если убрать в цикл, то непонятно, как
   // проверить, что игрок выиграл три раунда (см. стр. ...)
 
-  console.log('Welcome to the Brain Games!');
+  const printGreeting = () => {
+    console.log('Welcome to the Brain Games!');
+    const name = readlineSync.question('May I have your name? ');
+    console.log(`Hello, ${name}!`);
+    return name;
+  };
 
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
+  const name = printGreeting();
 
   console.log(gameRule);
 
