@@ -7,9 +7,7 @@ export const getRandomInteger = (min = 1, max = 100) => {
 };
 
 export const runGameEngine = (gameRule, getRoundData) => {
-  const maxRoundCount = 3;
-  let roundCount = 0; // если убрать в цикл, то непонятно, как
-  // проверить, что игрок выиграл три раунда (см. стр. ...)
+  const maxWonRoundCount = 3;
 
   const printGreeting = () => {
     console.log('Welcome to the Brain Games!');
@@ -18,26 +16,29 @@ export const runGameEngine = (gameRule, getRoundData) => {
     return name;
   };
 
+  const printSorry = (userAnswer, correctAnswer, name) => {
+    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+    console.log(`Let's try again, ${name}!`);
+  };
+
   const name = printGreeting();
 
   console.log(gameRule);
 
-  for (; roundCount < maxRoundCount; roundCount += 1) {
+  // если этот цикл — тоже плохая логика, то мне нужна подсказка :(
+  for (let wonRoundCount = 0; wonRoundCount < maxWonRoundCount; wonRoundCount += 1) {
     const [question, correctAnswer] = getRoundData();
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
     const userVictory = userAnswer === correctAnswer;
-
     if (userVictory === false) {
-      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      console.log(`Let's try again, ${name}!`);
-      break;
+      return printSorry(userAnswer, correctAnswer, name);
     }
-
-    console.log('Correct!');
+    if (wonRoundCount === 2) {
+      console.log(`Congratulations, ${name}!`);
+    } else {
+      console.log('Correct!');
+    }
   }
-
-  if (roundCount === 3) {
-    console.log(`Congratulations, ${name}!`);
-  }
+  return 'fuck consistent-return rule';
 };
