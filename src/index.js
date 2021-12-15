@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 
 export const runGameEngine = (gameRule, getRoundData) => {
-  const maxWonRoundCount = 3;
+  const maxRoundCount = 3;
 
   const printGreeting = () => {
     console.log('Welcome to the Brain Games!');
@@ -19,8 +19,7 @@ export const runGameEngine = (gameRule, getRoundData) => {
 
   console.log(gameRule);
 
-  // если этот цикл — тоже плохая логика, то мне нужна подсказка :(
-  for (let wonRoundCount = 0; wonRoundCount < maxWonRoundCount; wonRoundCount += 1) {
+  for (let roundCount = 0; roundCount < maxRoundCount; roundCount += 1) {
     const [question, correctAnswer] = getRoundData();
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
