@@ -2,7 +2,7 @@ import runGameEngine from '../index.js';
 
 import getRandomInteger from '../utils.js';
 
-const gameRule = 'Answer "yes" if the number is even, otherwise answer "no"';
+const gameRule = 'What is the result of the expression?';
 const maxNum = 10;
 
 const getRandomExpression = (IntegerLimit) => {
@@ -34,26 +34,15 @@ const getCalculation = (expressionCollection) => {
   return 'fuck consistent-return rule';
 };
 
-const getQuestion = () => {
+const getExpression = () => {
   const expressionCollection = getRandomExpression(maxNum);
   const [leftOperand, operator, rightOperand] = expressionCollection;
-  const stringExpression = `${leftOperand} ${operator} ${rightOperand}`;
-  return stringExpression;
-};
-
-const getCorrectAnswer = (stringExpression) => {
-  const expressionCollection = stringExpression.split(' ');
   const correctAnswer = getCalculation(expressionCollection);
-  return correctAnswer.toString();
+  const stringCorrectAnswer = correctAnswer.toString();
+  const stringExpression = `${leftOperand} ${operator} ${rightOperand}`;
+  return [stringExpression, stringCorrectAnswer];
 };
 
-const getGameData = () => {
-  const question = getQuestion();
-  const correctAnswer = getCorrectAnswer(question);
-  const gameDataCollection = [question, correctAnswer];
-  return gameDataCollection;
-};
-
-const startBrainCalc = () => runGameEngine(gameRule, getGameData);
+const startBrainCalc = () => runGameEngine(gameRule, getExpression);
 
 export default startBrainCalc;

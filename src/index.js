@@ -1,21 +1,11 @@
 import readlineSync from 'readline-sync';
 
+const maxRoundCount = 3;
+
 const runGameEngine = (gameRule, getRoundData) => {
-  const maxRoundCount = 3;
-
-  const printGreeting = () => {
-    console.log('Welcome to the Brain Games!');
-    const name = readlineSync.question('May I have your name? ');
-    console.log(`Hello, ${name}!`);
-    return name;
-  };
-
-  const printSorry = (userAnswer, correctAnswer, name) => {
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-    console.log(`Let's try again, ${name}!`);
-  };
-
-  const name = printGreeting();
+  console.log('Welcome to the Brain Games!');
+  const name = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${name}!`);
 
   console.log(gameRule);
 
@@ -25,12 +15,12 @@ const runGameEngine = (gameRule, getRoundData) => {
     const userAnswer = readlineSync.question('Your answer: ');
     const userVictory = userAnswer === correctAnswer;
     if (userVictory === false) {
-      return printSorry(userAnswer, correctAnswer, name);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${name}!`);
     }
     console.log('Correct!');
   }
   console.log(`Congratulations, ${name}!`);
-  return 'fuck consistent-return rule';
 };
 
 export default runGameEngine;
