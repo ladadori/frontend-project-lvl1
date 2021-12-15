@@ -10,13 +10,16 @@ const getRandomExpression = (IntegerLimit) => {
   const leftOperand = getRandomInteger(1, IntegerLimit);
   const rightOperand = getRandomInteger(1, IntegerLimit);
   const operators = ['+', '-', '*'];
+  const countOfOperators = operators.length;
   const getRandomOperator = () => {
-    const indexOfOperator = getRandomInteger(1, 3);
+    const indexOfOperator = getRandomInteger(1, countOfOperators);
     const operator = operators[indexOfOperator];
     return operator;
   };
-
-const operator = [leftOperand, operator, rightOperand];
+  const operator = getRandomOperator();
+  const expressionCollection = [leftOperand, operator, rightOperand];
+  return expressionCollection;
+};
 
 const getCalculation = (expressionCollection) => {
   const [leftOperand, operator, rightOperand] = expressionCollection;
