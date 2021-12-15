@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-export const runGameEngine = (gameRule, getRoundData) => {
+const runGameEngine = (gameRule, getRoundData) => {
   const maxRoundCount = 3;
 
   const printGreeting = () => {
@@ -26,9 +26,11 @@ export const runGameEngine = (gameRule, getRoundData) => {
     const userVictory = userAnswer === correctAnswer;
     if (userVictory === false) {
       return printSorry(userAnswer, correctAnswer, name);
-    } else {
-      console.log('Correct!');
     }
+    console.log('Correct!');
   }
   console.log(`Congratulations, ${name}!`);
+  return 'fuck consistent-return rule';
 };
+
+export default runGameEngine;

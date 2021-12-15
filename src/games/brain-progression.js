@@ -1,10 +1,6 @@
-import {
-  runGameEngine,
-} from '../index.js';
+import runGameEngine from '../index.js';
 
-import {
-  getRandomInteger,
-} from '../utils.js';
+import getRandomInteger from '../utils.js';
 
 const gameRule = 'What number is missing in the progression?';
 

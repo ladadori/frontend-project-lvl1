@@ -1,10 +1,6 @@
-import {
-  runGameEngine,
-} from '../index.js';
+import runGameEngine from '../index.js';
 
-import {
-  getRandomInteger,
-} from '../utils.js';
+import getRandomInteger from '../utils.js';
 
 const gameRule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const maxNum = 10;
