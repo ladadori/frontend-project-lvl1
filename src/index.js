@@ -20,7 +20,7 @@ const runGameEngine = (gameRule, getRoundData) => {
       return;
     }
     console.log('Correct!');
-  };
+  }
   console.log(`Congratulations, ${name}!`);
 };
 
