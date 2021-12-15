@@ -27,12 +27,9 @@ export const runGameEngine = (gameRule, getRoundData) => {
     const userVictory = userAnswer === correctAnswer;
     if (userVictory === false) {
       return printSorry(userAnswer, correctAnswer, name);
-    }
-    if (wonRoundCount === 2) {
-      console.log(`Congratulations, ${name}!`);
     } else {
       console.log('Correct!');
     }
   }
-  return 'fuck consistent-return rule';
+  console.log(`Congratulations, ${name}!`);
 };
