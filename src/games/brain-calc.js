@@ -7,18 +7,16 @@ const gameRule = 'Answer "yes" if the number is even, otherwise answer "no"';
 const maxNum = 10;
 
 const getRandomExpression = (IntegerLimit) => {
-  const leftOperand = getRandomInteger(undefined, IntegerLimit);
-  const rightOperand = getRandomInteger(undefined, IntegerLimit);
+  const leftOperand = getRandomInteger(1, IntegerLimit);
+  const rightOperand = getRandomInteger(1, IntegerLimit);
   const operators = ['+', '-', '*'];
   const getRandomOperator = () => {
-    const indexOfOperator = getRandomInteger(undefined, 3);
+    const indexOfOperator = getRandomInteger(1, 3);
     const operator = operators[indexOfOperator];
     return operator;
   };
-  const operator = getRandomOperator();
-  const expressionCollection = [leftOperand, operator, rightOperand];
-  return expressionCollection;
-};
+
+const operator = [leftOperand, operator, rightOperand];
 
 const getCalculation = (expressionCollection) => {
   const [leftOperand, operator, rightOperand] = expressionCollection;
