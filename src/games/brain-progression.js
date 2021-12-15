@@ -10,7 +10,7 @@ const step = 2;
 
 const getGameData = () => {
   const getProgression = (maxLength) => {
-    const startNumber = getRandomInteger(undefined, 30);
+    const startNumber = getRandomInteger(1, 30);
     const progression = [startNumber];
     let lastNumberIndex = 0;
     while (progression.length < maxLength) {
@@ -21,7 +21,7 @@ const getGameData = () => {
   };
 
   const getProgressionRiddle = (progression) => {
-    const blankIndex = getRandomInteger(undefined, progressionLengthLimit);
+    const blankIndex = getRandomInteger(1, progressionLengthLimit);
     const hiddenNumber = progression[blankIndex];
     const progressionRiddle = progression.slice(0);
     progressionRiddle[blankIndex] = '..';
