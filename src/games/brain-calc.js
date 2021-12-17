@@ -31,16 +31,15 @@ const calculate = (operandsAndOperator) => {
       return leftOperand * rightOperand;
     default:
   }
-  return 'fuck consistent-return rule';
+  return;
 };
 
 const generateExpression = () => {
   const operandsAndOperator = getRandomExpression(maxNum);
   const [leftOperand, operator, rightOperand] = operandsAndOperator;
-  const correctAnswer = calculate(operandsAndOperator);
-  const stringCorrectAnswer = correctAnswer.toString();
-  const stringExpression = `${leftOperand} ${operator} ${rightOperand}`;
-  return [stringExpression, stringCorrectAnswer];
+  const correctAnswer = calculate(operandsAndOperator).toString();
+  const expression = `${leftOperand} ${operator} ${rightOperand}`;
+  return [expression, correctAnswer];
 };
 
 const startBrainCalc = () => runGameEngine(gameRule, generateExpression);
