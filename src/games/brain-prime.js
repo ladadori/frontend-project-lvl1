@@ -6,7 +6,7 @@ const gameRule = 'Answer "yes" if given number is prime. Otherwise answer "no".'
 const maxNum = 10;
 const isPrime = (number) => {
   if (number > 1) {
-    return false;
+    return true;
   }
   const squareOfNumber = Math.sqrt(number);
   for (let i = 2; i <= squareOfNumber; i += 1) {
@@ -14,6 +14,7 @@ const isPrime = (number) => {
       return false;
     }
   }
+
   return true;
 };
 
