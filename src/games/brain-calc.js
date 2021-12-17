@@ -3,27 +3,16 @@ import runGameEngine from '../index.js';
 import generateRandomNumber from '../utils.js';
 
 const gameRule = 'What is the result of the expression?';
-const maxNum = 10;
+const NumberLimit = 10;
+const operators = ['+', '-', '*'];
 
 const generateGameData = () => {
-  const generateRandomExpression = (NumberLimit) => {
-    const leftOperand = generateRandomNumber(1, NumberLimit);
-    const rightOperand = generateRandomNumber(1, NumberLimit);
-    const operators = ['+', '-', '*'];
-    const countOfOperators = operators.length;
-    const generateRandomOperator = () => {
-      const indexOfOperator = generateRandomNumber(1, countOfOperators);
-      const operator = operators[indexOfOperator];
-      return operator;
-    };
-    const operator = generateRandomOperator();
-    const operandsAndOperator = [leftOperand, operator, rightOperand];
-    return operandsAndOperator;
-  };
+  const firstNumber = generateRandomNumber(1, NumberLimit);
+  const secondNumber = generateRandomNumber(1, NumberLimit);
+  const operator = operators[generateRandomNumber(1, 3)];
 
-  const calculate = (operandsAndOperator) => {
-    const [leftOperand, operator, rightOperand] = operandsAndOperator;
-    switch (operator) {
+  const calculate = (leftOperand, randomOperator, rightOperand) => {
+    switch (randomOperator) {
       case '+':
         return leftOperand + rightOperand;
       case '*':
@@ -33,10 +22,8 @@ const generateGameData = () => {
     return leftOperand - rightOperand;
   };
 
-  const operandsAndOperator = generateRandomExpression(maxNum);
-  const [leftOperand, operator, rightOperand] = operandsAndOperator;
-  const correctAnswer = calculate(operandsAndOperator).toString();
-  const expression = `${leftOperand} ${operator} ${rightOperand}`;
+  const correctAnswer = calculate(firstNumber, operator, secondNumber).toString();
+  const expression = `${firstNumber} ${operator} ${secondNumber}`;
   return [expression, correctAnswer];
 };
 
