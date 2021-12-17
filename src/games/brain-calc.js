@@ -1,27 +1,27 @@
 import runGameEngine from '../index.js';
 
-import getRandomInteger from '../utils.js';
+import generateRandomInteger from '../utils.js';
 
 const gameRule = 'What is the result of the expression?';
 const maxNum = 10;
 
 const getRandomExpression = (IntegerLimit) => {
-  const leftOperand = getRandomInteger(1, IntegerLimit);
-  const rightOperand = getRandomInteger(1, IntegerLimit);
+  const leftOperand = generateRandomInteger(1, IntegerLimit);
+  const rightOperand = generateRandomInteger(1, IntegerLimit);
   const operators = ['+', '-', '*'];
   const countOfOperators = operators.length;
   const getRandomOperator = () => {
-    const indexOfOperator = getRandomInteger(1, countOfOperators);
+    const indexOfOperator = generateRandomInteger(1, countOfOperators);
     const operator = operators[indexOfOperator];
     return operator;
   };
   const operator = getRandomOperator();
-  const expressionCollection = [leftOperand, operator, rightOperand];
-  return expressionCollection;
+  const operandsAndOperator = [leftOperand, operator, rightOperand];
+  return operandsAndOperator;
 };
 
-const getCalculation = (expressionCollection) => {
-  const [leftOperand, operator, rightOperand] = expressionCollection;
+const calculate = (operandsAndOperator) => {
+  const [leftOperand, operator, rightOperand] = operandsAndOperator;
   switch (operator) {
     case '-':
       return leftOperand - rightOperand;
@@ -34,15 +34,15 @@ const getCalculation = (expressionCollection) => {
   return 'fuck consistent-return rule';
 };
 
-const getExpression = () => {
-  const expressionCollection = getRandomExpression(maxNum);
-  const [leftOperand, operator, rightOperand] = expressionCollection;
-  const correctAnswer = getCalculation(expressionCollection);
+const generateExpression = () => {
+  const operandsAndOperator = getRandomExpression(maxNum);
+  const [leftOperand, operator, rightOperand] = operandsAndOperator;
+  const correctAnswer = calculate(operandsAndOperator);
   const stringCorrectAnswer = correctAnswer.toString();
   const stringExpression = `${leftOperand} ${operator} ${rightOperand}`;
   return [stringExpression, stringCorrectAnswer];
 };
 
-const startBrainCalc = () => runGameEngine(gameRule, getExpression);
+const startBrainCalc = () => runGameEngine(gameRule, generateExpression);
 
 export default startBrainCalc;

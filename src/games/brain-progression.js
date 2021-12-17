@@ -1,15 +1,15 @@
 import runGameEngine from '../index.js';
 
-import getRandomInteger from '../utils.js';
+import generateRandomInteger from '../utils.js';
 
 const gameRule = 'What number is missing in the progression?';
 
 const progressionLengthLimit = 10;
-const step = getRandomInteger(1, 3);
+const step = generateRandomInteger(1, 3);
 
-const getProgression = (maxLength) => {
-  const startNumber = getRandomInteger(1, 30);
-  const progression = [startNumber];
+const generateProgression = (maxLength) => {
+  const firstNumber = generateRandomInteger(1, 30);
+  const progression = [firstNumber];
   let lastNumberIndex = 0;
   while (progression.length < maxLength) {
     progression.push(progression[lastNumberIndex] + step);
@@ -18,8 +18,8 @@ const getProgression = (maxLength) => {
   return progression;
 };
 
-const getProgressionRiddle = (progression) => {
-  const blankIndex = getRandomInteger(1, progressionLengthLimit);
+const generateProgressionRiddle = (progression) => {
+  const blankIndex = generateRandomInteger(1, progressionLengthLimit);
   const hiddenNumber = progression[blankIndex];
   const progressionRiddle = progression.slice(0);
   progressionRiddle[blankIndex] = '..';
@@ -27,8 +27,8 @@ const getProgressionRiddle = (progression) => {
 };
 
 const getGameData = () => {
-  const progression = getProgression(progressionLengthLimit);
-  const [progressionRiddle, hiddenNumber] = getProgressionRiddle(progression);
+  const progression = generateProgression(progressionLengthLimit);
+  const [progressionRiddle, hiddenNumber] = generateProgressionRiddle(progression);
   const progressionRiddleString = progressionRiddle.join(' ');
   const hiddenNumberString = hiddenNumber.toString();
   return [progressionRiddleString, hiddenNumberString];
