@@ -1,14 +1,14 @@
 import runGameEngine from '../index.js';
 
-import generateRandomInteger from '../utils.js';
+import generateRandomNumber from '../utils.js';
 
 const gameRule = 'What number is missing in the progression?';
 
 const progressionLengthLimit = 10;
-const step = generateRandomInteger(1, 3);
+const step = generateRandomNumber(1, 3);
 
 const generateProgression = (maxLength) => {
-  const firstNumber = generateRandomInteger(1, 30);
+  const firstNumber = generateRandomNumber(1, 30);
   const progression = [firstNumber];
   let lastNumberIndex = 0;
   while (progression.length < maxLength) {
@@ -19,7 +19,7 @@ const generateProgression = (maxLength) => {
 };
 
 const generateProgressionRiddle = (progression) => {
-  const blankIndex = generateRandomInteger(1, progressionLengthLimit);
+  const blankIndex = generateRandomNumber(1, progressionLengthLimit);
   const hiddenNumber = progression[blankIndex];
   const progressionRiddle = progression.slice(0);
   progressionRiddle[blankIndex] = '..';

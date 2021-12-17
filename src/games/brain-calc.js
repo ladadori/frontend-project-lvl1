@@ -1,17 +1,17 @@
 import runGameEngine from '../index.js';
 
-import generateRandomInteger from '../utils.js';
+import generateRandomNumber from '../utils.js';
 
 const gameRule = 'What is the result of the expression?';
 const maxNum = 10;
 
-const generateRandomExpression = (IntegerLimit) => {
-  const leftOperand = generateRandomInteger(1, IntegerLimit);
-  const rightOperand = generateRandomInteger(1, IntegerLimit);
+const generateRandomExpression = (NumberLimit) => {
+  const leftOperand = generateRandomNumber(1, NumberLimit);
+  const rightOperand = generateRandomNumber(1, NumberLimit);
   const operators = ['+', '-', '*'];
   const countOfOperators = operators.length;
   const generateRandomOperator = () => {
-    const indexOfOperator = generateRandomInteger(1, countOfOperators);
+    const indexOfOperator = generateRandomNumber(1, countOfOperators);
     const operator = operators[indexOfOperator];
     return operator;
   };
