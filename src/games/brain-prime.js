@@ -4,6 +4,11 @@ import generateRandomNumber from '../utils.js';
 
 const gameRule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const maxNum = 10;
+
+// Modern mathematicians define a number as prime
+// if it is divided by exactly two numbers.
+// That said, one isn't prime
+
 const isPrime = (number) => {
   const squareOfNumber = Math.sqrt(number);
   for (let i = 2; i <= squareOfNumber; i += 1) {
