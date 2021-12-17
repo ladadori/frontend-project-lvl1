@@ -8,8 +8,7 @@ const progressionLengthLimit = 10;
 const step = generateRandomNumber(1, 3);
 
 const generateProgression = (maxLength) => {
-  const firstNumber = generateRandomNumber(1, 30);
-  const progression = [firstNumber];
+  const progression = [1];
   let lastNumberIndex = 0;
   while (progression.length < maxLength) {
     progression.push(progression[lastNumberIndex] + step);
@@ -19,7 +18,7 @@ const generateProgression = (maxLength) => {
 };
 
 const generateProgressionRiddle = (progression) => {
-  const blankIndex = generateRandomNumber(1, progressionLengthLimit);
+  const blankIndex = generateRandomNumber(1, progressionLengthLimit - 1);
   const hiddenNumber = progression[blankIndex];
   const progressionRiddle = progression.slice(0);
   progressionRiddle[blankIndex] = '..';
