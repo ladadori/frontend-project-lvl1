@@ -6,7 +6,6 @@ const gameRule = 'What is the result of the expression?';
 const maxNum = 10;
 
 const generateGameData = () => {
-
   const generateRandomExpression = (NumberLimit) => {
     const leftOperand = generateRandomNumber(1, NumberLimit);
     const rightOperand = generateRandomNumber(1, NumberLimit);
@@ -21,7 +20,7 @@ const generateGameData = () => {
     const operandsAndOperator = [leftOperand, operator, rightOperand];
     return operandsAndOperator;
   };
-  
+
   const calculate = (operandsAndOperator) => {
     const [leftOperand, operator, rightOperand] = operandsAndOperator;
     switch (operator) {
