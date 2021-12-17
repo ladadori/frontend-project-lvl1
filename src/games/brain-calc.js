@@ -23,15 +23,13 @@ const getRandomExpression = (IntegerLimit) => {
 const calculate = (operandsAndOperator) => {
   const [leftOperand, operator, rightOperand] = operandsAndOperator;
   switch (operator) {
-    case '-':
-      return leftOperand - rightOperand;
     case '+':
       return leftOperand + rightOperand;
     case '*':
       return leftOperand * rightOperand;
     default:
   }
-  return;
+  return leftOperand - rightOperand;
 };
 
 const generateExpression = () => {
