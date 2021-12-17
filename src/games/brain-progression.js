@@ -34,6 +34,6 @@ const getGameData = () => {
   return [progressionRiddleString, hiddenNumberString];
 };
 
-const startBrainProgression = () => runGameEngine(gameRule, getGameData);
+const runBrainProgresson = () => runGameEngine(gameRule, getGameData);
 
-export default startBrainProgression;
+export default runBrainProgresson;

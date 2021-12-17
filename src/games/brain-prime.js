@@ -20,6 +20,6 @@ const generateGameData = () => {
   return [question, correctAnswer];
 };
 
-const startBrainPrime = () => runGameEngine(gameRule, generateGameData);
+const runBrainPrime = () => runGameEngine(gameRule, generateGameData);
 
-export default startBrainPrime;
+export default runBrainPrime;

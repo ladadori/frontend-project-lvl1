@@ -13,6 +13,6 @@ const getGameData = () => {
   return gameData;
 };
 
-const startBrainEven = () => runGameEngine(gameRule, getGameData);
+const runBrainEven = () => runGameEngine(gameRule, getGameData);
 
-export default startBrainEven;
+export default runBrainEven;

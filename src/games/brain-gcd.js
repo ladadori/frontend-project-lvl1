@@ -21,8 +21,8 @@ const generateGameData = () => {
   return [question, correctAnswer];
 };
 
-const startBrainGcd = () => {
+const runBrainGCD = () => {
   runGameEngine(gameRule, generateGameData);
 };
 
-export default startBrainGcd;
+export default runBrainGCD;

@@ -5,17 +5,17 @@ import generateRandomInteger from '../utils.js';
 const gameRule = 'What is the result of the expression?';
 const maxNum = 10;
 
-const getRandomExpression = (IntegerLimit) => {
+const generateRandomExpression = (IntegerLimit) => {
   const leftOperand = generateRandomInteger(1, IntegerLimit);
   const rightOperand = generateRandomInteger(1, IntegerLimit);
   const operators = ['+', '-', '*'];
   const countOfOperators = operators.length;
-  const getRandomOperator = () => {
+  const generateRandomOperator = () => {
     const indexOfOperator = generateRandomInteger(1, countOfOperators);
     const operator = operators[indexOfOperator];
     return operator;
   };
-  const operator = getRandomOperator();
+  const operator = generateRandomOperator();
   const operandsAndOperator = [leftOperand, operator, rightOperand];
   return operandsAndOperator;
 };
@@ -32,14 +32,14 @@ const calculate = (operandsAndOperator) => {
   return leftOperand - rightOperand;
 };
 
-const generateExpression = () => {
-  const operandsAndOperator = getRandomExpression(maxNum);
+const generateGameData = () => {
+  const operandsAndOperator = generateRandomExpression(maxNum);
   const [leftOperand, operator, rightOperand] = operandsAndOperator;
   const correctAnswer = calculate(operandsAndOperator).toString();
   const expression = `${leftOperand} ${operator} ${rightOperand}`;
   return [expression, correctAnswer];
 };
 
-const startBrainCalc = () => runGameEngine(gameRule, generateExpression);
+const runBrainCalc = () => runGameEngine(gameRule, generateGameData);
 
-export default startBrainCalc;
+export default runBrainCalc;
