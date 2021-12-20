@@ -10,6 +10,9 @@ const maxNum = 10;
 // That said, one isn't prime
 
 const isPrime = (number) => {
+  if (number === 1) {
+    return false;
+  }
   const squareOfNumber = Math.sqrt(number);
   for (let i = 2; i <= squareOfNumber; i += 1) {
     if (number % i === 0) {
