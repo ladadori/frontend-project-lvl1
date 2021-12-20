@@ -20,30 +20,30 @@ npm link
 
 ### Brain-even game:
 
-[![asciicast](https://asciinema.org/a/453114.svg)](https://asciinema.org/a/453114)
+[![asciicast](https://asciinema.org/a/457352.svg)](https://asciinema.org/a/457352)
 
 Run: `brain-even` command. Guess if number is even and be correct three times in a row.
 
 ### Brain-calc game:
 
-[![asciicast](https://asciinema.org/a/453128.svg)](https://asciinema.org/a/453128)
+[![asciicast](https://asciinema.org/a/457354.svg)](https://asciinema.org/a/457354)
 
 Run: `brain-calc` command. Can you say the result of the expression? No division tho.
 
 ### Brain-gcd game:
 
-[![asciicast](https://asciinema.org/a/453135.svg)](https://asciinema.org/a/453135)
+[![asciicast](https://asciinema.org/a/457355.svg)](https://asciinema.org/a/457355)
 
-Run: `brain-gcd` command. Find greatest divisor of two numbers. Small numbers, I promise.
+Run: `brain-gcd` command. Find greatest divisor of two numbers. Small numbers only, I promise.
 
 ### Brain-progression game:
 
-[![asciicast](https://asciinema.org/a/453151.svg)](https://asciinema.org/a/453151)
+[![asciicast](https://asciinema.org/a/457357.svg)](https://asciinema.org/a/457357)
 
 Run: `brain-progression` command. Do you know what is the number at the place of the blank should be?
 
 ### Brain-prime game:
 
-[![asciicast](https://asciinema.org/a/453392.svg)](https://asciinema.org/a/453392)
+[![asciicast](https://asciinema.org/a/457358.svg)](https://asciinema.org/a/457358)
 
 Run: `brain-prime` command. A prime number is a number greater than 1 with only two factors – themselves and 1. Tell if number is prime!
