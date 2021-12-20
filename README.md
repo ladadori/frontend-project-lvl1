@@ -7,7 +7,7 @@
 ### Maintainability:
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/ladadori/frontend-project-lvl1)
 
-# Hi! This is study project for Hexlet online school of programming. We have five games for CLI:
+# Five games for CLI (hexlet.io pet project)
 
 ## Installation and setup:
 
